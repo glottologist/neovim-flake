@@ -7,9 +7,11 @@
     ./basic
     ./core  
     ./explorer
+    ./find   
     ./statusline
     ./tabline
     ./theme
+    
     ./keys
   ];
 

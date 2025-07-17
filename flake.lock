@@ -80,6 +80,22 @@
         "type": "github"
       }
     },
+    "dressing-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1739381641,
+        "narHash": "sha256-dBz+/gZA6O6fJy/GSgM6ZHGAR3MTGt/W1olzzTYRlgM=",
+        "owner": "stevearc",
+        "repo": "dressing.nvim",
+        "rev": "2d7c2db2507fa3c4956142ee607431ddb2828639",
+        "type": "github"
+      },
+      "original": {
+        "owner": "stevearc",
+        "repo": "dressing.nvim",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
@@ -282,6 +298,7 @@
         "catppuccin": "catppuccin",
         "cheatsheet-nvim": "cheatsheet-nvim",
         "dracula": "dracula",
+        "dressing-nvim": "dressing-nvim",
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",
         "lualine": "lualine",
@@ -293,6 +310,8 @@
         "onedark": "onedark",
         "papercolor": "papercolor",
         "plenary-nvim": "plenary-nvim",
+        "telescope": "telescope",
+        "telescope-fzf-native": "telescope-fzf-native",
         "tokyonight": "tokyonight",
         "which-key": "which-key",
         "zenbones": "zenbones"
@@ -310,6 +329,38 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "telescope": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1747012888,
+        "narHash": "sha256-JpW0ehsX81yVbKNzrYOe1hdgVMs6oaaxMLH6lECnOJg=",
+        "owner": "nvim-telescope",
+        "repo": "telescope.nvim",
+        "rev": "b4da76be54691e854d3e0e02c36b0245f945c2c7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-telescope",
+        "repo": "telescope.nvim",
+        "type": "github"
+      }
+    },
+    "telescope-fzf-native": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1741765009,
+        "narHash": "sha256-Zyv8ikxdwoUiDD0zsqLzfhBVOm/nKyJdZpndxXEB6ow=",
+        "owner": "nvim-telescope",
+        "repo": "telescope-fzf-native.nvim",
+        "rev": "1f08ed60cafc8f6168b72b80be2b2ea149813e55",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-telescope",
+        "repo": "telescope-fzf-native.nvim",
         "type": "github"
       }
     },

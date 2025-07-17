@@ -45,15 +45,16 @@ inputs: let
         name = "tokyonight";
         style = "day";
         transparent = false;
-      };
-
-    
+      };  
 
       tabline = {
         nvimBufferline.enable = true;
       };
 
-  
+      find = {
+        telescope.enable = true;
+      };
+
       keys = {
         whichKey.enable = true;
         cheatsheet.enable = false;

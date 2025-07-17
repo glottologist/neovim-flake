@@ -119,6 +119,24 @@
       flake = false;
     };
 
+    # FIND
+    telescope = {
+      url = "github:nvim-telescope/telescope.nvim";
+      flake = false;
+    };
+
+    telescope-fzf-native = {
+      url = "github:nvim-telescope/telescope-fzf-native.nvim";
+      flake = false;
+    };
+
+    dressing-nvim = {
+      url = "github:stevearc/dressing.nvim";
+      flake = false;
+    };
+
+
+
     # KEYS
     nvim-web-devicons = {
       url = "github:nvim-tree/nvim-web-devicons";

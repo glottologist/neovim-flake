@@ -10,6 +10,11 @@ with lib; let
     "nui-nvim"
     "neotree"
 
+    # FIND
+    "telescope"
+    "telescope-fzf-native"
+    "dressing-nvim"
+
     # KEYS
     "which-key"
     "cheatsheet-nvim"
