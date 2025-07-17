@@ -1,0 +1,6 @@
+[
+  "tokyonight"
+  "onedark"
+  "catppuccin"
+  "papercolor"
+]

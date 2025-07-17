@@ -1,0 +1,4 @@
+[submodule "docs/theme"]
+	path = docs/theme
+	url = https://github.com/glottologist/glottologist-mdbook-theme.git
+	branch = main
