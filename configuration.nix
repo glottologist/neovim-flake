@@ -60,7 +60,22 @@ inputs: let
         cheatsheet.enable = false;
       };
 
-
+      code = {
+          ai = {
+            windsurf.enable = true;
+          };
+          completion = {
+            nvimCmp.enable = false;
+            blinkCmp.enable = true;
+          };
+          lsp = {
+            enable = true;
+          };
+          treesitter = {
+            enable = true;
+            fold = false;
+          };
+      };
 
 
       };

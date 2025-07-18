@@ -45,7 +45,7 @@ inputs: {
       then
         (
           if (plug == "nvim-treesitter")
-          then (buildTreesitterPlug vimOptions.treesitter.grammars)
+          then (buildTreesitterPlug vimOptions.code.treesitter.grammars)
           else (buildPlug plug)
         )
       else plug

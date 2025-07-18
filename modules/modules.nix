@@ -6,12 +6,12 @@
   modules = [
     ./basic
     ./core  
+    ./code  
     ./explorer
     ./find   
     ./statusline
     ./tabline
     ./theme
-    
     ./keys
   ];
 

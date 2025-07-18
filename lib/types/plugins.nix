@@ -7,19 +7,19 @@ with lib; let
     "plenary-nvim"
 
     # EXPLORER
-    "nui-nvim"
     "neotree"
+    "nui-nvim"
 
     # FIND
+    "dressing-nvim"
     "telescope"
     "telescope-fzf-native"
-    "dressing-nvim"
 
     # KEYS
-    "which-key"
     "cheatsheet-nvim"
-    "nvim-web-devicons"
     "mini-icons"
+    "nvim-web-devicons"
+    "which-key"
 
     # STATUSLINE
     "lualine"
@@ -30,10 +30,36 @@ with lib; let
 
     # THEME
     "catppuccin"
-    "tokyonight"
     "onedark"
     "papercolor"
+    "tokyonight"
     "zenbones"
+
+    # CODE
+
+    ## AI
+    "windsurf"
+
+    ## LSP
+    "nvim-lspconfig"
+    "lspsaga"
+    "lspkind"
+
+    ## TREESITTER
+    "nvim-treesitter"
+    "nvim-treesitter-context"
+
+    ## COMPLETION
+    "blink-cmp"
+    "blink-compat"
+    "friendly-snippets"
+    "cmp-buffer"
+    "cmp-nvim-lsp"
+    "cmp-path"
+    "cmp-treesitter"
+    "cmp-vsnip"
+    "nvim-cmp"
+    "vim-vsnip"
 
   ];
   # You can either use the name of the plugin or a package.

@@ -159,5 +159,78 @@
       flake = false;
     };
 
+    # CODE
+
+    ## AI
+    windsurf = {
+      url = "github:Exafunction/windsurf.vim";
+      flake = false;
+    };
+
+   ## LSP
+    nvim-lspconfig = {
+      url = "github:neovim/nvim-lspconfig";
+      flake = false;
+    };
+    lspsaga = {
+      url = "github:tami5/lspsaga.nvim";
+      flake = false;
+    };
+
+    lspkind = {
+      url = "github:onsails/lspkind-nvim";
+      flake = false;
+    };
+
+
+    ## TREESITTER
+    nvim-treesitter = {
+      url = "github:nvim-treesitter/nvim-treesitter";
+      flake = false;
+    };
+    nvim-treesitter-context = {
+      url = "github:nvim-treesitter/nvim-treesitter-context";
+      flake = false;
+    };
+
+    ## COMPLETION
+    blink-cmp = {
+      url = "github:Saghen/blink.cmp";
+      flake = false;
+    };
+     blink-compat = {
+      url = "github:Saghen/blink.compat";
+      flake = false;
+    };
+     friendly-snippets = {
+      url = "github:rafamadriz/friendly-snippets";
+      flake = false;
+    };
+
+    nvim-cmp = {
+      url = "github:hrsh7th/nvim-cmp";
+      flake = false;
+    };
+    cmp-buffer = {
+      url = "github:hrsh7th/cmp-buffer";
+      flake = false;
+    };
+    cmp-nvim-lsp = {
+      url = "github:hrsh7th/cmp-nvim-lsp";
+      flake = false;
+    };
+    cmp-vsnip = {
+      url = "github:hrsh7th/cmp-vsnip";
+      flake = false;
+    };
+    cmp-path = {
+      url = "github:hrsh7th/cmp-path";
+      flake = false;
+    };
+    cmp-treesitter = {
+      url = "github:ray-x/cmp-treesitter";
+      flake = false;
+    };
+
   };
 }
