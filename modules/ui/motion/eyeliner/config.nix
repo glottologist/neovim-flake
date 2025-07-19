@@ -13,10 +13,11 @@ in {
       "<leader>ue" = "<cmd> EyelinerToggle<CR>";
     };
 
-    vim.luaConfigRC.flash-nvim = nvim.dag.entryAnywhere ''
+    vim.luaConfigRC.eyeliner = nvim.dag.entryAnywhere ''
       require('eyeliner').setup({
         highlight_on_key = true,
-        dim = false           
+        dim = true,
+         default_keymaps = true,
       })
     '';
   };
