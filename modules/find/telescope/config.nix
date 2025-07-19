@@ -161,7 +161,8 @@ in {
                 return win
               end
             end
-            return 0
+            -- If no suitable window found, return current window
+            return vim.api.nvim_get_current_win()
           end,
           mappings = {
             i = {

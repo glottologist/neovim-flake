@@ -9,6 +9,7 @@ _: {
     ./lspconfig
     ./lspsaga
     ./lspsignature
+    ./lightbulb
     ./null-ls
   ];
 }

@@ -8,6 +8,7 @@ with lib; let
 
     # EXPLORER
     "neotree"
+    "nvimtree"
     "nui-nvim"
 
     # FIND
@@ -42,10 +43,12 @@ with lib; let
 
     ## LSP
     "nvim-lspconfig"
+    "nvim-lightbulb"
     "lspsaga"
     "lspkind"
     "null-ls"
     "lsp-signature"
+    "trouble"
 
     ## TREESITTER
     "nvim-treesitter"
@@ -71,6 +74,12 @@ with lib; let
     ### Nix
     "rnix-lsp"
     "nil"
+
+   # UI
+   "modes-nvim"
+   "noice-nvim"
+   "nui-nvim"
+   "nvim-notify"
 
   ];
   # You can either use the name of the plugin or a package.

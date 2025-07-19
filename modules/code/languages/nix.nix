@@ -19,11 +19,11 @@ with builtins; let
       lspConfig = ''
         lspconfig.rnix.setup{
           capabilities = capabilities,
-        ${
-          if (cfg.format.enable && cfg.format.type == "nixpkgs-fmt")
-          then useFormat
-          else noFormat
-        },
+          ${
+            if (cfg.format.enable && cfg.format.type == "nixpkgs-fmt")
+            then useFormat
+            else noFormat
+          },
           cmd = {"${cfg.lsp.package}/bin/rnix-lsp"},
         }
       '';
@@ -35,30 +35,30 @@ with builtins; let
       lspConfig = ''
         lspconfig.nil_ls.setup{
           capabilities = capabilities,
-        ${
-          if cfg.format.enable
-          then useFormat
-          else noFormat
-        },
+          ${
+            if cfg.format.enable
+            then useFormat
+            else noFormat
+          },
           cmd = {"${cfg.lsp.package}/bin/nil"},
-        ${optionalString cfg.format.enable ''
-          settings = {
-            ["nil"] = {
-          ${optionalString (cfg.format.type == "alejandra")
-            ''
-              formatting = {
-                command = {"${cfg.format.package}/bin/alejandra", "--quiet"},
+          ${optionalString cfg.format.enable ''
+            settings = {
+              ["nil"] = {
+                ${optionalString (cfg.format.type == "alejandra")
+                  ''
+                    formatting = {
+                      command = {"${cfg.format.package}/bin/alejandra", "--quiet"},
+                    },
+                  ''}
+                ${optionalString (cfg.format.type == "nixpkgs-fmt")
+                  ''
+                    formatting = {
+                      command = {"${cfg.format.package}/bin/nixpkgs-fmt"},
+                    },
+                  ''}
               },
-            ''}
-          ${optionalString (cfg.format.type == "nixpkgs-fmt")
-            ''
-              formatting = {
-                command = {"${cfg.format.package}/bin/nixpkgs-fmt"},
-              },
-            ''}
-        ''}
             },
-          };
+          ''}
         }
       '';
     };

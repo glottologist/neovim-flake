@@ -78,7 +78,7 @@ in {
         trim_scope = '${cfg.trimScope}',
         mode = '${cfg.mode}',
         separator = ${nvim.lua.nullString cfg.separator},
-        max_lines = ${toString cfg.zindex},
+        zindex = ${toString cfg.zindex},
       }
     '';
   };

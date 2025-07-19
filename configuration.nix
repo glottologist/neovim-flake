@@ -28,9 +28,9 @@ inputs: let
 
         # EXPLORER
         explorer = {
-           neotree = {
-             enable = true;
-          };
+          # These are mutually explusive.  Only enable one or the other
+           neotree.enable = true;
+           nvimtree.enable = false;
         };  
     
       statusline = {
@@ -52,28 +52,39 @@ inputs: let
       };
 
       find = {
-        telescope.enable = true;
+        telescope.enable = false;
       };
 
       keys = {
         whichKey.enable = true;
-        cheatsheet.enable = true;
+        cheatsheet.enable = false;
       };
+
+    ui = {
+      modes.enable=false;
+      noice.enable=false;
+      notifcations = {
+         nvim-notify.enable=false;
+      };
+    };
 
       code = {
           ai = {
-            windsurf.enable = true;
+            windsurf.enable = false;
           };
           completion = {
-            nvimCmp.enable = true;
+            nvimCmp.enable = false;
             blinkCmp.enable = false;
           };
           lsp = {
             enable = true;
-            formatOnSave = true;
-            lspkind.enable = true;
-            lspsaga.enable = true;
+            formatOnSave = false;
+            lspconfig.enable = true;
+            lightbulb.enable = false;
+            lspkind.enable = false;
+            lspsaga.enable = false;
             lspsignature.enable = false;
+            trouble.enable = false;
           };
           treesitter = {
             enable = true;
@@ -82,13 +93,13 @@ inputs: let
 
           languages = {
         enableLSP = true;
-        enableFormat = true;
-        enableTreesitter = true;
-        enableExtraDiagnostics = true;
+        enableFormat = false;
+        enableTreesitter = false;
+        enableExtraDiagnostics = false;
             
-            rust.enable=true;
-            nix.enable =true;
-            markdown.enable = true;
+            rust.enable= true;
+            nix.enable=false;
+            markdown.enable = false;
           };
       };
 

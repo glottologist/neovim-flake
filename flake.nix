@@ -71,6 +71,10 @@
       url = "github:nvim-neo-tree/neo-tree.nvim";
       flake = false;
     };
+    nvimtree = {
+      url = "github:nvim-tree/nvim-tree.lua";
+      flake = false;
+    };
 
     # TABLINE
     bufferline-nvim = {
@@ -190,6 +194,14 @@
       url = "github:ray-x/lsp_signature.nvim";
       flake = false;
     };
+    nvim-lightbulb = {
+      url = "github:kosayoda/nvim-lightbulb";
+      flake = false;
+    };
+     trouble = {
+      url = "github:folke/trouble.nvim";
+      flake = false;
+    };
 
 
     ## TREESITTER
@@ -263,6 +275,21 @@
     nil = {
       url = "github:oxalica/nil";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+
+   # UI
+       noice-nvim = {
+      url = "github:folke/noice.nvim";
+      flake = false;
+    };
+    modes-nvim = {
+      url = "github:mvllow/modes.nvim";
+      flake = false;
+    };
+     nvim-notify = {
+      url = "github:rcarriga/nvim-notify";
+      flake = false;
     };
 
   };
