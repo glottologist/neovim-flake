@@ -10,24 +10,25 @@ in {
     (mkIf cfg.indentBlankline.enable {
       vim.startPlugins = ["indent-blankline"];
       vim.luaConfigRC.indent-blankline = nvim.dag.entryAnywhere ''
-        -- highlight error: https://github.com/lukas-reineke/indent-blankline.nvim/issues/59
-        vim.wo.colorcolumn = "99999"
-        vim.opt.list = true
+            -- highlight error: https://github.com/lukas-reineke/indent-blankline.nvim/issues/59
+            vim.wo.colorcolumn = "99999"
+            vim.opt.list = true
 
-        ${optionalString (cfg.indentBlankline.eolChar != null) ''
+            ${optionalString (cfg.indentBlankline.eolChar != null) ''
           vim.opt.listchars:append({ eol = "${cfg.indentBlankline.eolChar}" })
         ''}
-        ${optionalString (cfg.indentBlankline.fillChar != null) ''
+            ${optionalString (cfg.indentBlankline.fillChar != null) ''
           vim.opt.listchars:append({ space = "${cfg.indentBlankline.fillChar}" })
         ''}
 
-        require("indent_blankline").setup {
-          enabled = true,
-          char = "${cfg.indentBlankline.listChar}",
-          show_current_context = ${boolToString cfg.indentBlankline.showCurrContext},
-          show_end_of_line = ${boolToString cfg.indentBlankline.showEndOfLine},
-          use_treesitter = ${boolToString cfg.indentBlankline.useTreesitter},
-        }
+            require("ibl").setup {
+                indent = { highlight = highlight, char = "" },
+                whitespace = {
+                    highlight = highlight,
+                    remove_blankline_trail = false,
+                },
+                scope = { enabled = false },
+            }
       '';
     })
 
@@ -36,8 +37,8 @@ in {
       vim.luaConfigRC.fidget-nvim = nvim.dag.entryAnywhere ''
         require"fidget".setup{
           align = {
-            bottom = ${boolToString cfg.fidget-nvim.align.bottom},
-            right = ${boolToString cfg.fidget-nvim.align.right},
+            bottom = ${boolToString cfg.fidget.align.bottom},
+            right = ${boolToString cfg.fidget.align.right},
           }
         }
       '';

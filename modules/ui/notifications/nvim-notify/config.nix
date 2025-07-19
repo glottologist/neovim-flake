@@ -5,7 +5,7 @@
 }:
 with lib;
 with builtins; let
-  cfg = config.vim.ui.notifcations.nvim-notify;
+  cfg = config.vim.ui.notifications.nvim-notify;
 in {
   config = mkIf cfg.enable {
     vim.startPlugins = ["nvim-notify"];

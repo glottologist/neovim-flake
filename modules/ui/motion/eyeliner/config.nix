@@ -14,11 +14,12 @@ in {
     };
 
     vim.luaConfigRC.eyeliner = nvim.dag.entryAnywhere ''
-      require('eyeliner').setup({
+       require'eyeliner'.setup {
         highlight_on_key = true,
-        dim = true,
-         default_keymaps = true,
-      })
+        default_keymaps = true,
+        dim = false           
+      }
+      
     '';
   };
 }

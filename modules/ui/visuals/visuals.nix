@@ -37,6 +37,47 @@ in {
         description = "Enable indentation guides [indent-blankline]";
         default = false;
       };
+      listChar = mkOption {
+        type = types.str;
+        description = "Character for indentation line";
+        default = "│";
+      };
+
+      fillChar = mkOption {
+        description = "Character to fill indents";
+        type = with types; nullOr types.str;
+        default = "⋅";
+      };
+
+      eolChar = mkOption {
+        description = "Character at end of line";
+        type = with types; nullOr types.str;
+        default = "↴";
+      };
+
+      showEndOfLine = mkOption {
+        description = nvim.nmd.asciiDoc ''
+          Displays the end of line character set by <<opt-vim.visuals.indentBlankline.eolChar>> instead of the
+          indent guide on line returns.
+        '';
+        type = types.bool;
+        default = cfg.indentBlankline.eolChar != null;
+        defaultText = literalExpression "config.vim.visuals.indentBlankline.eolChar != null";
+      };
+
+      showCurrContext = mkOption {
+        description = "Highlight current context from treesitter";
+        type = types.bool;
+        default = config.vim.code.treesitter.enable;
+        defaultText = literalExpression "config.vim.treesitter.enable";
+      };
+   
+      useTreesitter = mkOption {
+        description = "Use treesitter to calculate indentation when possible.";
+        type = types.bool;
+        default = config.vim.code.treesitter.enable;
+        defaultText = literalExpression "config.vim.treesitter.enable";
+      };
     };
   };
 }

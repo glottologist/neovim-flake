@@ -299,6 +299,10 @@
       url = "github:jinh0/eyeliner.nvim";
       flake = false;
     };
+    mini-nvim = {
+      url = "github:echasnovski/mini.nvim";
+      flake = false;
+    };
 
     ## Visuals
     fidget-nvim = {

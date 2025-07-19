@@ -84,6 +84,7 @@ with lib; let
     ## Motion
     "flash-nvim"
     "eyeliner"
+    "mini-nvim"
 
     ## Visuals
     "fidget-nvim"

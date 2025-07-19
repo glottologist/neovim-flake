@@ -6,13 +6,14 @@
 }: let
   modules = [
     ./basic
-    ./core  
-    ./code  
+    ./core
+    ./code
     ./explorer
-    ./find   
+    ./find
     ./status
     ./theme
     ./keys
+    ./ui
   ];
 
   pkgsModule = {config, ...}: {

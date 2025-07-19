@@ -73,11 +73,13 @@ inputs: let
             nvim-notify.enable = true;
           };
           motion = {
+            ###  flash and eyeliner are mutualy exclusive - only enable 1 of them
             flash.enable = false;
             eyeliner.enable = true;
+            mini.enable = true;
           };
           visuals = {
-            enable = false;
+            enable = true;
             fidget.enable = true;
             indentBlankline = {
               enable = true;
