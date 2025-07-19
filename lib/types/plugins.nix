@@ -44,6 +44,8 @@ with lib; let
     "nvim-lspconfig"
     "lspsaga"
     "lspkind"
+    "null-ls"
+    "lsp-signature"
 
     ## TREESITTER
     "nvim-treesitter"
@@ -60,6 +62,15 @@ with lib; let
     "cmp-vsnip"
     "nvim-cmp"
     "vim-vsnip"
+
+    ## Languages
+    ### Rust
+    "rust-tools"
+    "crates-nvim"
+
+    ### Nix
+    "rnix-lsp"
+    "nil"
 
   ];
   # You can either use the name of the plugin or a package.

@@ -14,7 +14,8 @@
 
       imports = [
         # add lib to module args
-        {_module.args = {inherit (nixpkgs) lib;};}
+        {_module.args = {inherit (nixpkgs) lib inputs;};}
+            #   inputs.blink-cmp.packages.${pkgs.system}.default
         ./flake/apps.nix
         ./flake/legacyPackages.nix
         ./flake/overlays.nix
@@ -29,7 +30,7 @@
 
         homeManagerModules = {
           neovim-flake = {
-            imports = [
+            imports =[
               (import ./lib/module self.packages)
             ];
           };
@@ -181,6 +182,14 @@
       url = "github:onsails/lspkind-nvim";
       flake = false;
     };
+    null-ls = {
+      url = "github:jose-elias-alvarez/null-ls.nvim";
+      flake = false;
+    };
+    lsp-signature = {
+      url = "github:ray-x/lsp_signature.nvim";
+      flake = false;
+    };
 
 
     ## TREESITTER
@@ -196,7 +205,6 @@
     ## COMPLETION
     blink-cmp = {
       url = "github:Saghen/blink.cmp";
-      flake = false;
     };
      blink-compat = {
       url = "github:Saghen/blink.compat";
@@ -230,6 +238,31 @@
     cmp-treesitter = {
       url = "github:ray-x/cmp-treesitter";
       flake = false;
+    };
+    
+    vim-vsnip = {
+      url = "github:hrsh7th/vim-vsnip";
+      flake = false;
+    };
+
+
+   ## Languages
+
+   ### Rust
+    rust-tools = {
+      url = "github:simrat39/rust-tools.nvim";
+      flake = false;
+    };
+    crates-nvim = {
+      url = "github:Saecki/crates.nvim";
+      flake = false;
+    };
+
+    ### Nix
+    rnix-lsp.url = "github:nix-community/rnix-lsp";
+    nil = {
+      url = "github:oxalica/nil";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
   };

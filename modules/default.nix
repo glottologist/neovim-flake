@@ -12,7 +12,7 @@ inputs: {
   extendedLib = import ../lib/stdlib-extended.nix lib;
 
   nvimModules = import ./modules.nix {
-    inherit check pkgs;
+    inherit check pkgs inputs;
     lib = extendedLib;
   };
 
@@ -21,6 +21,7 @@ inputs: {
     specialArgs =
       {
         modulesPath = toString ./.;
+        inherit inputs;
       }
       // extraSpecialArgs;
   };
@@ -46,6 +47,8 @@ inputs: {
         (
           if (plug == "nvim-treesitter")
           then (buildTreesitterPlug vimOptions.code.treesitter.grammars)
+          else if (plug == "blink-cmp")
+          then inputs.blink-cmp.packages.${pkgs.system}.default
           else (buildPlug plug)
         )
       else plug

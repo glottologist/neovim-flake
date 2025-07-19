@@ -6,5 +6,9 @@ _: {
 
 
     ./lspkind
+    ./lspconfig
+    ./lspsaga
+    ./lspsignature
+    ./null-ls
   ];
 }

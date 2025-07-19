@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }:
 with lib;
@@ -30,11 +31,11 @@ in {
   config = mkIf cfg.enable {
     vim.startPlugins = [
       "blink-cmp"
-      "blink-compat"
+      "blink-compat" 
       "friendly-snippets"
     ];
     
-    vim.autocomplete.sources = {
+    vim.code.completion.sources = {
       "lsp" = "[LSP]";
       "path" = "[Path]";
       "snippets" = "[Snippets]";
@@ -49,7 +50,7 @@ in {
         -- name for each source
         vim_item.menu = ({
           ${builtMaps}
-        })[entry.source.name]
+          })[entry.source.name]
         return vim_item
       end
 
@@ -72,7 +73,7 @@ in {
             kind_icons = kind_icons,
           ''}
         },
-        
+        fuzzy = { implementation = "prefer_rust_with_warning" },
         completion = {
           accept = {
             auto_brackets = {

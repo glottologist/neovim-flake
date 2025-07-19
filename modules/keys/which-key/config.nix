@@ -23,6 +23,51 @@ in {
       
       -- Use the new wk.add() format instead of wk.register()
       wk.add({
+
+
+${
+        if config.vim.code.ai.windsurf.enable
+        then ''
+          -- AI Completion keybindings (Windsurf/Codeium - Insert Mode)
+          { "<C-a>", desc = "Accept AI Completion", mode = "i" },
+          { "<C-n>", desc = "Cycle/Complete AI Suggestions", mode = "i" },
+          { "<C-p>", desc = "Cycle AI Completions Backward", mode = "i" },
+          { "<C-c>", desc = "Clear AI Completions", mode = "i" },
+          
+          -- AI group for reference and controls
+          { "<leader>a", group = "AI (Windsurf/Codeium)" },
+          { "<leader>ah", desc = "Show AI Help", callback = function()
+            vim.notify([[
+Windsurf/Codeium AI Keybindings (Insert Mode):
+  <C-a>     - Accept AI completion
+  <C-n>     - Cycle or complete AI suggestions
+  <C-p>     - Cycle AI completions backward
+  <C-c>     - Clear AI completions
+
+AI is enabled for: rust, python, bash, lua, dart, nix,
+javascript, typescript, java, c, cpp, go, php, ruby,
+html, css, json, yaml, markdown, and many more...
+            ]], vim.log.levels.INFO, { title = "Windsurf/Codeium Help" })
+          end },
+          
+          -- Manual AI trigger functions
+          { "<leader>at", "<cmd>lua vim.fn['codeium#CycleOrComplete']()", desc = "Trigger AI Completion", mode = "i" },
+          { "<leader>ac", "<cmd>lua vim.fn['codeium#Clear']()", desc = "Clear AI Completions", mode = "i" },
+          
+          -- Check AI status
+          { "<leader>as", desc = "Check AI Status", callback = function()
+            local status = vim.fn["codeium#GetStatusString"]()
+            if status and status ~= "" then
+              vim.notify("Codeium Status: " .. status, vim.log.levels.INFO)
+            else
+              vim.notify("Codeium is active", vim.log.levels.INFO)
+            end
+          end },
+        ''
+        else ""
+      }
+
+
         ${
         if config.vim.keys.cheatsheet.enable
         then ''
@@ -87,6 +132,16 @@ in {
           { "<leader>eb", "<cmd>Neotree source=buffers position=left<CR>", desc = "Explore buffers" },
           { "<leader>ef", "<cmd>Neotree filesystem reveal left<CR>", desc = "Explore files" },
           { "<leader>eg", "<cmd>Neotree source=git_status<CR>", desc = "Explore git status" },
+        ''
+        else ""
+      }
+
+
+
+        ${
+        if  config.vim.find.telescope.enable && config.vim.code.treesitter.enable
+        then ''
+          { "<leader>fs", "<cmd> Telescope treesitter<CR>", desc = "Find in Treesitter" },
         ''
         else ""
       }
@@ -160,6 +215,67 @@ in {
       }
 
 
+
+      ${
+        if config.vim.code.completion.nvimCmp.enable
+        then ''
+          -- Completion (nvim-cmp)
+          { "<leader>c", group = "Completion" },
+          { "<leader>ch", desc = "Completion Help", callback = function()
+            vim.notify([[
+Completion Keybindings (Insert Mode):
+  <C-Space> - Trigger completion
+  <C-d>     - Scroll docs up
+  <C-f>     - Scroll docs down
+  <C-e>     - Close completion
+  <CR>      - Confirm selection
+  <Tab>     - Next item / Expand snippet
+  <S-Tab>   - Previous item / Jump back in snippet
+            ]], vim.log.levels.INFO, { title = "nvim-cmp Help" })
+          end },
+          
+          -- These work in normal mode for completion-related actions
+          { "<leader>cc", "<cmd>lua require('cmp').complete()<cr>", desc = "Trigger Completion", mode = "i" },
+          { "<leader>ca", "<cmd>lua require('cmp').abort()<cr>", desc = "Abort Completion", mode = "i" },
+        ''
+        else ""
+      }
+
+      ${
+        if config.vim.code.completion.blinkCmp.enable
+        then ''
+          -- Completion keybindings (blink.cmp - Insert Mode)
+          { "<C-Space>", desc = "Show/Hide Completion & Docs", mode = "i" },
+          { "<C-y>", desc = "Select and Accept", mode = "i" },
+          { "<C-d>", desc = "Scroll Docs Up", mode = "i" },
+          { "<C-f>", desc = "Scroll Docs Down", mode = "i" },
+          { "<C-e>", desc = "Hide Completion", mode = "i" },
+          { "<CR>", desc = "Accept Completion", mode = "i" },
+          { "<Tab>", desc = "Next Item / Snippet Forward", mode = "i" },
+          { "<S-Tab>", desc = "Previous Item / Snippet Backward", mode = "i" },
+          
+          -- Completion group for reference
+          { "<leader>c", group = "Completion (blink.cmp)" },
+          { "<leader>ch", desc = "Show Completion Help", callback = function()
+            vim.notify([[
+blink.cmp Keybindings (Insert Mode):
+  <C-Space> - Show/Hide completion & docs
+  <C-y>     - Select and accept
+  <C-d>     - Scroll documentation up
+  <C-f>     - Scroll documentation down
+  <C-e>     - Hide completion
+  <CR>      - Accept completion
+  <Tab>     - Next item / Snippet forward
+  <S-Tab>   - Previous item / Snippet backward
+            ]], vim.log.levels.INFO, { title = "blink.cmp Help" })
+          end },
+          
+          -- Toggle functions for normal mode
+          { "<leader>ct", "<cmd>lua require('blink.cmp').show()<cr>", desc = "Trigger Completion", mode = "i" },
+          { "<leader>ca", "<cmd>lua require('blink.cmp').hide()<cr>", desc = "Hide Completion", mode = "i" },
+        ''
+        else ""
+      }
 
       })
     '';

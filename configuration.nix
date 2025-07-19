@@ -57,7 +57,7 @@ inputs: let
 
       keys = {
         whichKey.enable = true;
-        cheatsheet.enable = false;
+        cheatsheet.enable = true;
       };
 
       code = {
@@ -65,15 +65,30 @@ inputs: let
             windsurf.enable = true;
           };
           completion = {
-            nvimCmp.enable = false;
-            blinkCmp.enable = true;
+            nvimCmp.enable = true;
+            blinkCmp.enable = false;
           };
           lsp = {
             enable = true;
+            formatOnSave = true;
+            lspkind.enable = true;
+            lspsaga.enable = true;
+            lspsignature.enable = false;
           };
           treesitter = {
             enable = true;
             fold = false;
+          };
+
+          languages = {
+        enableLSP = true;
+        enableFormat = true;
+        enableTreesitter = true;
+        enableExtraDiagnostics = true;
+            
+            rust.enable=true;
+            nix.enable =true;
+            markdown.enable = true;
           };
       };
 
