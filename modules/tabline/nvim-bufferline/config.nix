@@ -51,16 +51,162 @@ in {
 
       vim.luaConfigRC.nvimBufferline = nvim.dag.entryAnywhere ''
         require("bufferline").setup({
+        highlights = {
+    -- Background fill (the area not covered by buffers)
+    fill = {
+      bg = '#eeeeee', -- color00: main background
+    },
+    
+    -- Inactive buffers (background tabs)
+    background = {
+      fg = '#878787', -- color05: muted gray for inactive text
+      bg = '#bcbcbc', -- color08: slightly darker than main bg for inactive tabs
+    },
+    
+    -- Active/selected buffer
+    buffer_selected = {
+      fg = '#444444', -- color07: dark gray for good contrast on light bg
+      bg = '#eeeeee', -- color00: main background to make it stand out
+      bold = true,
+      italic = false,
+    },
+    
+    -- Buffer visible (when you have multiple windows)
+    buffer_visible = {
+      fg = '#005f87', -- color06: dark blue for visible but not active
+      bg = '#d0d0d0', -- slightly darker than main bg
+    },
+    
+    -- Close buttons
+    close_button = {
+      fg = '#878787', -- color05: muted for inactive close buttons
+      bg = '#bcbcbc', -- color08: matches inactive buffer bg
+    },
+    close_button_selected = {
+      fg = '#af0000', -- color01: red for active close button
+      bg = '#eeeeee', -- color00: matches selected buffer bg
+    },
+    close_button_visible = {
+      fg = '#005f87', -- color06: matches visible buffer fg
+      bg = '#d0d0d0',
+    },
+    
+    -- Separators (the thin lines between buffers)
+    separator = {
+      fg = '#eeeeee', -- color00: same as main bg to make separators invisible
+      bg = '#bcbcbc', -- color08: inactive buffer bg
+    },
+    separator_selected = {
+      fg = '#eeeeee', -- color00: same as main bg
+      bg = '#eeeeee', -- color00: selected buffer bg
+    },
+    separator_visible = {
+      fg = '#eeeeee', -- color00: same as main bg
+      bg = '#d0d0d0',
+    },
+    
+    -- Modified indicator (the dot that shows unsaved changes)
+    modified = {
+      fg = '#d75f00', -- color12: orange for modified indicator
+      bg = '#bcbcbc', -- color08: inactive buffer bg
+    },
+    modified_selected = {
+      fg = '#d75f00', -- color12: orange for modified indicator
+      bg = '#eeeeee', -- color00: selected buffer bg
+    },
+    modified_visible = {
+      fg = '#d75f00', -- color12: orange for modified indicator
+      bg = '#d0d0d0',
+    },
+    
+    -- Duplicate file names (when you have files with same name)
+    duplicate = {
+      fg = '#8700af', -- color11: purple for duplicates
+      bg = '#bcbcbc', -- color08: inactive buffer bg
+    },
+    duplicate_selected = {
+      fg = '#8700af', -- color11: purple for duplicates
+      bg = '#eeeeee', -- color00: selected buffer bg
+      bold = true,
+    },
+    duplicate_visible = {
+      fg = '#8700af', -- color11: purple for duplicates
+      bg = '#d0d0d0',
+    },
+    
+    -- Tab separators (if using tabline mode)
+    tab = {
+      fg = '#878787', -- color05: muted gray
+      bg = '#bcbcbc', -- color08: inactive buffer bg
+    },
+    tab_selected = {
+      fg = '#444444', -- color07: dark gray
+      bg = '#eeeeee', -- color00: main background
+      bold = true,
+    },
+    tab_close = {
+      fg = '#af0000', -- color01: red for close button
+      bg = '#bcbcbc', -- color08: inactive buffer bg
+    },
+    
+    -- Error/Warning/Info/Hint indicators (if using diagnostics)
+    error = {
+      fg = '#af0000', -- color01: red for errors
+      bg = '#bcbcbc', -- color08: inactive buffer bg
+    },
+    error_selected = {
+      fg = '#af0000', -- color01: red for errors
+      bg = '#eeeeee', -- color00: selected buffer bg
+    },
+    
+    warning = {
+      fg = '#d75f00', -- color12: orange for warnings
+      bg = '#bcbcbc', -- color08: inactive buffer bg
+    },
+    warning_selected = {
+      fg = '#d75f00', -- color12: orange for warnings
+      bg = '#eeeeee', -- color00: selected buffer bg
+    },
+    
+    info = {
+      fg = '#0087af', -- color04: blue for info
+      bg = '#bcbcbc', -- color08: inactive buffer bg
+    },
+    info_selected = {
+      fg = '#0087af', -- color04: blue for info
+      bg = '#eeeeee', -- color00: selected buffer bg
+    },
+    
+    hint = {
+      fg = '#008700', -- color02: green for hints
+      bg = '#bcbcbc', -- color08: inactive buffer bg
+    },
+    hint_selected = {
+      fg = '#008700', -- color02: green for hints
+      bg = '#eeeeee', -- color00: selected buffer bg
+    },
+    
+    -- Pick indicators (for buffer picking mode)
+    pick = {
+      fg = '#d70000', -- color09: bright red
+      bg = '#bcbcbc', -- color08: inactive buffer bg
+      bold = true,
+    },
+    pick_selected = {
+      fg = '#d70000', -- color09: bright red
+      bg = '#eeeeee', -- color00: selected buffer bg
+      bold = true,
+    },
+  },
           options = {
             mode = "buffers",
-            numbers = "none",
+            numbers = "both",
             close_command = ${mouse.close},
             right_mouse_command = ${mouse.right},
             left_mouse_command = "buffer %d",
             middle_mouse_command = nil,
             indicator = {
-              icon = "▎",
-              style = "icon",
+              style = "underline",
             },
             buffer_close_icon = "󰅖",
             modified_icon = "●",
@@ -71,7 +217,7 @@ in {
             max_prefix_length = 15,
             tab_size = 18,
             diagnostics = "nvim_lsp",
-            diagnostics_update_in_insert = false,
+            update_in_insert = true,
             color_icons = true,
             show_buffer_icons = true,
             show_buffer_close_icons = true,

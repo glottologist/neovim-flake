@@ -35,7 +35,7 @@ inputs: let
     
       statusline = {
         lualine = {
-          enable = true;
+          enable = false;
           theme = "ayu_light";
         };
       };
@@ -52,12 +52,12 @@ inputs: let
       };
 
       find = {
-        telescope.enable = false;
+        telescope.enable = true;
       };
 
       keys = {
         whichKey.enable = true;
-        cheatsheet.enable = false;
+        cheatsheet.enable = true;
       };
 
     ui = {
@@ -70,21 +70,21 @@ inputs: let
 
       code = {
           ai = {
-            windsurf.enable = false;
+            windsurf.enable = true;
           };
           completion = {
             nvimCmp.enable = false;
-            blinkCmp.enable = false;
+            blinkCmp.enable = true;
           };
           lsp = {
             enable = true;
-            formatOnSave = false;
+            formatOnSave = true;
             lspconfig.enable = true;
-            lightbulb.enable = false;
-            lspkind.enable = false;
-            lspsaga.enable = false;
-            lspsignature.enable = false;
-            trouble.enable = false;
+            lightbulb.enable = true;
+            lspkind.enable = true;
+            lspsaga.enable = true;
+            lspsignature.enable = true;
+            trouble.enable = true;
           };
           treesitter = {
             enable = true;
@@ -93,13 +93,13 @@ inputs: let
 
           languages = {
         enableLSP = true;
-        enableFormat = false;
-        enableTreesitter = false;
+        enableFormat = true;
+        enableTreesitter = true;
         enableExtraDiagnostics = false;
             
             rust.enable= true;
-            nix.enable=false;
-            markdown.enable = false;
+            nix.enable=true;
+            markdown.enable = true;
           };
       };
 

@@ -15,7 +15,8 @@ in {
     vim.completion.sources = {"nvim_lsp" = "[LSP]";};
 
     vim.luaConfigRC.lsp-setup = ''
-      vim.g.formatsave = ${boolToString cfg.formatOnSave};
+
+   vim.g.formatsave = ${boolToString cfg.formatOnSave};
 
       local attach_keymaps = function(client, bufnr)
         local opts = { noremap=true, silent=true }
