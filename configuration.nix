@@ -29,46 +29,67 @@ inputs: let
         # EXPLORER
         explorer = {
           # These are mutually explusive.  Only enable one or the other
-           neotree.enable = true;
-           nvimtree.enable = false;
-        };  
-    
-      statusline = {
-        lualine = {
-          enable = false;
-          theme = "ayu_light";
+          neotree.enable = true;
+          nvimtree.enable = false;
         };
-      };
 
-      theme = {
-        enable = true;
-        name = "tokyonight";
-        style = "day";
-        transparent = false;
-      };  
+        # STATUS
+        status = {
+          statusline = {
+            lualine = {
+              enable = true;
+              theme = "ayu_light";
+            };
+          };
+          tabline = {
+            nvimBufferline.enable = true;
+          };
+        };
 
-      tabline = {
-        nvimBufferline.enable = true;
-      };
+        # THEME
+        theme = {
+          enable = true;
+          name = "tokyonight";
+          style = "day";
+          transparent = false;
+        };
 
-      find = {
-        telescope.enable = true;
-      };
+        # FIND
+        find = {
+          telescope.enable = true;
+        };
 
-      keys = {
-        whichKey.enable = true;
-        cheatsheet.enable = true;
-      };
+        # KEYS
+        keys = {
+          whichKey.enable = true;
+          cheatsheet.enable = true;
+        };
 
-    ui = {
-      modes.enable=false;
-      noice.enable=false;
-      notifcations = {
-         nvim-notify.enable=false;
-      };
-    };
+        # UI
+        ui = {
+          modes.enable = true;
+          noice.enable = true;
+          notifcations = {
+            nvim-notify.enable = true;
+          };
+          motion = {
+            flash.enable = false;
+            eyeliner.enable = true;
+          };
+          visuals = {
+            enable = false;
+            fidget.enable = true;
+            indentBlankline = {
+              enable = true;
+              fillChar = null;
+              eolChar = null;
+              showCurrContext = true;
+            };
+          };
+        };
 
-      code = {
+        # CODE
+        code = {
           ai = {
             windsurf.enable = true;
           };
@@ -92,26 +113,23 @@ inputs: let
           };
 
           languages = {
-        enableLSP = true;
-        enableFormat = true;
-        enableTreesitter = true;
-        enableExtraDiagnostics = false;
-            
-            rust.enable= true;
-            nix.enable=true;
+            enableLSP = true;
+            enableFormat = true;
+            enableTreesitter = true;
+            enableExtraDiagnostics = false;
+
+            rust.enable = true;
+            nix.enable = true;
             markdown.enable = true;
           };
+          git = {
+            enable = true;
+            gitworktrees.enable = true;
+            gitsigns.enable = true;
+            gitsigns.codeActions = false;
+          };
+        };
       };
-
-
-      };
-  
-
-
-
-
-
-
     };
   };
 in {

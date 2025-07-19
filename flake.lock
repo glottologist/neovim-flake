@@ -228,6 +228,22 @@
         "type": "github"
       }
     },
+    "eyeliner": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1727476631,
+        "narHash": "sha256-qOMToZtBd39mdFZEr5WfIkHj+7TWeCPy2GJdIN+qOic=",
+        "owner": "jinh0",
+        "repo": "eyeliner.nvim",
+        "rev": "8f197eb30cecdf4c2cc9988a5eecc6bc34c0c7d6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jinh0",
+        "repo": "eyeliner.nvim",
+        "type": "github"
+      }
+    },
     "fenix": {
       "inputs": {
         "nixpkgs": [
@@ -247,6 +263,22 @@
       "original": {
         "owner": "nix-community",
         "repo": "fenix",
+        "type": "github"
+      }
+    },
+    "fidget-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1738817426,
+        "narHash": "sha256-AFUx/ZQVWV7s5Wlppjk6N9QXoJKNKqxtf990FFlTEhw=",
+        "owner": "j-hui",
+        "repo": "fidget.nvim",
+        "rev": "d9ba6b7bfe29b3119a610892af67602641da778e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "j-hui",
+        "repo": "fidget.nvim",
         "type": "github"
       }
     },
@@ -304,6 +336,22 @@
         "type": "github"
       }
     },
+    "flash-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1739519195,
+        "narHash": "sha256-0WKr+fJtV7xTecxWJ8qUkq8NE818Vhyi/QSQ7CcVNPY=",
+        "owner": "folke",
+        "repo": "flash.nvim",
+        "rev": "3c942666f115e2811e959eabbdd361a025db8b63",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "flash.nvim",
+        "type": "github"
+      }
+    },
     "friendly-snippets": {
       "flake": false,
       "locked": {
@@ -317,6 +365,54 @@
       "original": {
         "owner": "rafamadriz",
         "repo": "friendly-snippets",
+        "type": "github"
+      }
+    },
+    "git-worktrees": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1699392961,
+        "narHash": "sha256-+RBoa1NS/W6XMhaIg3/Qw38VnL2imTQZ6bR88bZzV1c=",
+        "owner": "ThePrimeagen",
+        "repo": "git-worktree.nvim",
+        "rev": "f247308e68dab9f1133759b05d944569ad054546",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ThePrimeagen",
+        "repo": "git-worktree.nvim",
+        "type": "github"
+      }
+    },
+    "gitsigns-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1752682345,
+        "narHash": "sha256-zrn67MsSYuZSH5L5XyWGKopN/KKepvmV7WZF6+DPpig=",
+        "owner": "lewis6991",
+        "repo": "gitsigns.nvim",
+        "rev": "0cb5a7753d3c4b8e9cfdc9d88d9110cb8d4b1544",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lewis6991",
+        "repo": "gitsigns.nvim",
+        "type": "github"
+      }
+    },
+    "indent-blankline": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1742224677,
+        "narHash": "sha256-0q/V+b4UrDRnaC/eRWOi9HU9a61vQSAM9/C8ZQyKt+Y=",
+        "owner": "lukas-reineke",
+        "repo": "indent-blankline.nvim",
+        "rev": "005b56001b2cb30bfa61b7986bc50657816ba4ba",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lukas-reineke",
+        "repo": "indent-blankline.nvim",
         "type": "github"
       }
     },
@@ -349,22 +445,6 @@
       "original": {
         "owner": "onsails",
         "repo": "lspkind-nvim",
-        "type": "github"
-      }
-    },
-    "lspsaga": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1670360222,
-        "narHash": "sha256-7ENInq3LAPPTdm0Fb7klOc630j8m4LRj1kLZZFYLh68=",
-        "owner": "tami5",
-        "repo": "lspsaga.nvim",
-        "rev": "5faeec9f2508d2d49a66c0ac0d191096b4e3fa81",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tami5",
-        "repo": "lspsaga.nvim",
         "type": "github"
       }
     },
@@ -808,12 +888,17 @@
         "crates-nvim": "crates-nvim",
         "dracula": "dracula",
         "dressing-nvim": "dressing-nvim",
+        "eyeliner": "eyeliner",
+        "fidget-nvim": "fidget-nvim",
         "flake-parts": "flake-parts_2",
         "flake-utils": "flake-utils",
+        "flash-nvim": "flash-nvim",
         "friendly-snippets": "friendly-snippets",
+        "git-worktrees": "git-worktrees",
+        "gitsigns-nvim": "gitsigns-nvim",
+        "indent-blankline": "indent-blankline",
         "lsp-signature": "lsp-signature",
         "lspkind": "lspkind",
-        "lspsaga": "lspsaga",
         "lualine": "lualine",
         "mini-icons": "mini-icons",
         "modes-nvim": "modes-nvim",

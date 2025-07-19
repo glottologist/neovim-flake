@@ -15,7 +15,7 @@
       imports = [
         # add lib to module args
         {_module.args = {inherit (nixpkgs) lib inputs;};}
-            #   inputs.blink-cmp.packages.${pkgs.system}.default
+        #   inputs.blink-cmp.packages.${pkgs.system}.default
         ./flake/apps.nix
         ./flake/legacyPackages.nix
         ./flake/overlays.nix
@@ -30,7 +30,7 @@
 
         homeManagerModules = {
           neovim-flake = {
-            imports =[
+            imports = [
               (import ./lib/module self.packages)
             ];
           };
@@ -60,13 +60,13 @@
       url = "github:nvim-lua/plenary.nvim";
       flake = false;
     };
-    
+
     # EXPLORER
     nui-nvim = {
       url = "github:MunifTanjim/nui.nvim";
       flake = false;
     };
-  
+
     neotree = {
       url = "github:nvim-neo-tree/neo-tree.nvim";
       flake = false;
@@ -91,7 +91,6 @@
       url = "github:hoob3rt/lualine.nvim";
       flake = false;
     };
-
 
     # THEME
     tokyonight = {
@@ -140,8 +139,6 @@
       flake = false;
     };
 
-
-
     # KEYS
     nvim-web-devicons = {
       url = "github:nvim-tree/nvim-web-devicons";
@@ -152,7 +149,6 @@
       url = "github:echasnovski/mini.icons";
       flake = false;
     };
-
 
     which-key = {
       url = "github:folke/which-key.nvim";
@@ -172,13 +168,9 @@
       flake = false;
     };
 
-   ## LSP
+    ## LSP
     nvim-lspconfig = {
       url = "github:neovim/nvim-lspconfig";
-      flake = false;
-    };
-    lspsaga = {
-      url = "github:tami5/lspsaga.nvim";
       flake = false;
     };
 
@@ -198,11 +190,10 @@
       url = "github:kosayoda/nvim-lightbulb";
       flake = false;
     };
-     trouble = {
+    trouble = {
       url = "github:folke/trouble.nvim";
       flake = false;
     };
-
 
     ## TREESITTER
     nvim-treesitter = {
@@ -218,11 +209,11 @@
     blink-cmp = {
       url = "github:Saghen/blink.cmp";
     };
-     blink-compat = {
+    blink-compat = {
       url = "github:Saghen/blink.compat";
       flake = false;
     };
-     friendly-snippets = {
+    friendly-snippets = {
       url = "github:rafamadriz/friendly-snippets";
       flake = false;
     };
@@ -251,16 +242,15 @@
       url = "github:ray-x/cmp-treesitter";
       flake = false;
     };
-    
+
     vim-vsnip = {
       url = "github:hrsh7th/vim-vsnip";
       flake = false;
     };
 
+    ## Languages
 
-   ## Languages
-
-   ### Rust
+    ### Rust
     rust-tools = {
       url = "github:simrat39/rust-tools.nvim";
       flake = false;
@@ -277,9 +267,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ## Git
+    git-worktrees = {
+      url = "github:ThePrimeagen/git-worktree.nvim";
+      flake = false;
+    };
+    gitsigns-nvim = {
+      url = "github:lewis6991/gitsigns.nvim";
+      flake = false;
+    };
 
-   # UI
-       noice-nvim = {
+    # UI
+    noice-nvim = {
       url = "github:folke/noice.nvim";
       flake = false;
     };
@@ -287,10 +286,28 @@
       url = "github:mvllow/modes.nvim";
       flake = false;
     };
-     nvim-notify = {
+    nvim-notify = {
       url = "github:rcarriga/nvim-notify";
       flake = false;
     };
+    ## Motion
+    flash-nvim = {
+      url = "github:folke/flash.nvim";
+      flake = false;
+    };
+    eyeliner = {
+      url = "github:jinh0/eyeliner.nvim";
+      flake = false;
+    };
 
+    ## Visuals
+    fidget-nvim = {
+      url = "github:j-hui/fidget.nvim";
+      flake = false;
+    };
+    indent-blankline = {
+      url = "github:lukas-reineke/indent-blankline.nvim";
+      flake = false;
+    };
   };
 }

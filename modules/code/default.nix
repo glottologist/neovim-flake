@@ -5,5 +5,6 @@
     ./languages
     ./treesitter
     ./lsp
+    ./git
   ];
 }

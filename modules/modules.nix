@@ -10,8 +10,7 @@
     ./code  
     ./explorer
     ./find   
-    ./statusline
-    ./tabline
+    ./status
     ./theme
     ./keys
   ];

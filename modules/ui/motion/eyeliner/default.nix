@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./lspsaga.nix
+    ./eyeliner.nix
     ./config.nix
   ];
 }

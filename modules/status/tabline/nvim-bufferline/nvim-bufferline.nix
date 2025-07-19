@@ -5,7 +5,7 @@
 }:
 with lib;
 with builtins; {
-  options.vim.tabline.nvimBufferline = {
+  options.vim.status.tabline.nvimBufferline = {
     enable = mkEnableOption "Enable nvim-bufferline-lua as a bufferline";
   };
 }

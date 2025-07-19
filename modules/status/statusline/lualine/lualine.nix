@@ -7,7 +7,7 @@ with lib;
 with builtins; let
   supported_themes = import ./supported_themes.nix;
 in {
-  options.vim.statusline.lualine = {
+  options.vim.status.statusline.lualine = {
     enable = mkEnableOption "lualine";
 
     icons = {

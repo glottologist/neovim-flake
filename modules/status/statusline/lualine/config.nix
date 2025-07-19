@@ -4,7 +4,7 @@
   ...
 }:
 with lib; let
-  cfg = config.vim.statusline.lualine;
+  cfg = config.vim.status.statusline.lualine;
 in {
   config = (mkIf cfg.enable) {
     vim.startPlugins = [

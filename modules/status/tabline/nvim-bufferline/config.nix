@@ -6,7 +6,7 @@
 }:
 with lib;
 with builtins; let
-  cfg = config.vim.tabline.nvimBufferline;
+  cfg = config.vim.status.tabline.nvimBufferline;
 in {
   config = mkIf cfg.enable (
     let

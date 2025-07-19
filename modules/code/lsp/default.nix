@@ -7,7 +7,6 @@ _: {
 
     ./lspkind
     ./lspconfig
-    ./lspsaga
     ./lspsignature
     ./lightbulb
     ./null-ls

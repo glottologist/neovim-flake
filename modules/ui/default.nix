@@ -3,5 +3,7 @@
     ./modes
     ./noice
     ./notifications
+    ./visuals
+    ./motion
   ];
 }

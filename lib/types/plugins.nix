@@ -2,7 +2,6 @@
 with lib; let
   # Plugin must be same as input name from flake.nix
   availablePlugins = [
-  
     # BASIC
     "plenary-nvim"
 
@@ -22,10 +21,8 @@ with lib; let
     "nvim-web-devicons"
     "which-key"
 
-    # STATUSLINE
+    # STATUS
     "lualine"
-
-    # TABLINE
     "bufdelete-nvim"
     "bufferline-nvim"
 
@@ -44,7 +41,6 @@ with lib; let
     ## LSP
     "nvim-lspconfig"
     "nvim-lightbulb"
-    "lspsaga"
     "lspkind"
     "null-ls"
     "lsp-signature"
@@ -75,12 +71,23 @@ with lib; let
     "rnix-lsp"
     "nil"
 
-   # UI
-   "modes-nvim"
-   "noice-nvim"
-   "nui-nvim"
-   "nvim-notify"
+    ## Git
+    "git-worktrees"
+    "gitsigns-nvim"
 
+    # UI
+    "modes-nvim"
+    "noice-nvim"
+    "nui-nvim"
+    "nvim-notify"
+
+    ## Motion
+    "flash-nvim"
+    "eyeliner"
+
+    ## Visuals
+    "fidget-nvim"
+    "indent-blankline"
   ];
   # You can either use the name of the plugin or a package.
   pluginsType = with types;
