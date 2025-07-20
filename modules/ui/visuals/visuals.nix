@@ -71,12 +71,39 @@ in {
         default = config.vim.code.treesitter.enable;
         defaultText = literalExpression "config.vim.treesitter.enable";
       };
-   
+
       useTreesitter = mkOption {
         description = "Use treesitter to calculate indentation when possible.";
         type = types.bool;
         default = config.vim.code.treesitter.enable;
         defaultText = literalExpression "config.vim.treesitter.enable";
+      };
+    };
+
+    twilight = {
+      enable = mkOption {
+        type = types.bool;
+        description = "Enable twilight plugin";
+        default = false;
+      };
+      context = mkOption {
+        type = types.int;
+        description = "Number of lines to show around the code currently being edited";
+        default = "10";
+      };
+
+      useTreesitter = mkOption {
+        description = "Use treesitter when available for the file.";
+        type = types.bool;
+        default = config.vim.code.treesitter.enable;
+        defaultText = literalExpression "config.vim.treesitter.enable";
+      };
+    };
+    zenmode = {
+      enable = mkOption {
+        type = types.bool;
+        description = "Enable zenmode plugin";
+        default = false;
       };
     };
   };

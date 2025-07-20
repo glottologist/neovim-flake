@@ -56,7 +56,10 @@ inputs: let
 
         # FIND
         find = {
-          telescope.enable = true;
+          telescope = {
+            enable = true;
+            media-files.enable = true;
+          };
         };
 
         # KEYS
@@ -76,7 +79,11 @@ inputs: let
             ###  flash and eyeliner are mutualy exclusive - only enable 1 of them
             flash.enable = false;
             eyeliner.enable = true;
+
             mini.enable = true;
+            spider.enable = true;
+            harpoon.enable = true;
+            tide.enable = true;
           };
           visuals = {
             enable = true;
@@ -86,7 +93,14 @@ inputs: let
               fillChar = null;
               eolChar = null;
               showCurrContext = true;
+              useTreesitter = true;
             };
+            twilight = {
+              enable = true;
+              context = 12;
+              useTreesitter = true;
+            };
+            zenmode.enable = true;
           };
         };
 

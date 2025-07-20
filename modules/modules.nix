@@ -6,13 +6,13 @@
 }: let
   modules = [
     ./basic
+    ./keys
     ./core
     ./code
     ./explorer
     ./find
     ./status
     ./theme
-    ./keys
     ./ui
   ];
 

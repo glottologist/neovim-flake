@@ -11,6 +11,7 @@ in {
   config = mkIf (cfg.enable) {
     vim.startPlugins = [
       "telescope"
+      "search"
       "telescope-fzf-native"
       "dressing-nvim"
     ];
@@ -18,17 +19,17 @@ in {
     vim.nnoremap = {
       # Buffer and file navigation
       "<leader>," = "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>";
-      "<leader>/" = "<cmd>Telescope live_grep<cr>";
+      "<leader><space>" = "<cmd>Telescope live_grep<cr>";
       "<leader>:" = "<cmd>Telescope command_history<cr>";
-      "<leader><space>" = "<cmd>Telescope find_files<cr>";
+      "<leader>/" = "<cmd>Telescope find_files<cr>";
 
       # Find commands
       "<leader>fb" = "<cmd>Telescope buffers sort_mru=true sort_lastused=true ignore_current_buffer=true<cr>";
       "<leader>ff" = "<cmd>Telescope find_files<cr>";
-      "<leader>fF" = "<cmd>Telescope find_files cwd=%:p:h<cr>";
+      "<leader>Ff" = "<cmd>Telescope find_files cwd=%:p:h<cr>";
       "<leader>fg" = "<cmd>Telescope git_files<cr>";
       "<leader>fr" = "<cmd>Telescope oldfiles<cr>";
-      "<leader>fR" = "<cmd>Telescope oldfiles cwd_only=true<cr>";
+      "<leader>Fr" = "<cmd>Telescope oldfiles cwd_only=true<cr>";
 
       # Git commands
       "<leader>gc" = "<cmd>Telescope git_commits<cr>";
@@ -70,6 +71,89 @@ in {
       "<leader>sW" = "<cmd>Telescope grep_string search_dirs={'.'}<cr>";
     };
 
+    vim.luaConfigRC.telescope-keys = nvim.dag.entryAnywhere ''
+      ${nvim.lua.writeIf config.vim.keys.whichKey.enable ''
+        require('mini.icons').setup()
+          local mini_icons = require('mini.icons')
+          local get_icon = function(category, name)
+            local icon, hl = mini_icons.get(category, name)
+            return icon
+          end
+            require("which-key").add({
+
+        { "<leader>b", group = "buffer", icon = get_icon("default", "file") },
+        { "<leader>l", group = "lsp", icon = get_icon("lsp", "method") },
+        { "<leader>w", group = "window", icon = get_icon("default", "directory") },
+        { "<leader>s", group = "search", icon = get_icon("filetype", "query") },
+        { "<leader>t", group = "toggle", icon = get_icon("lsp", "boolean") },
+        { "<leader>c", group = "code", icon = get_icon("lsp", "class") },
+        { "<leader>d", group = "debug", icon = get_icon("filetype", "dapui_breakpoints") },
+        { "<leader>n", group = "notes", icon = get_icon("filetype", "markdown") },
+
+        -- You can also use other categories
+        { "<leader>o", group = "open", icon = get_icon("directory", "nvim") },
+        { "<leader>r", group = "run", icon = get_icon("extension", "exe") },
+        { "<leader>p", group = "packages", icon = get_icon("filetype", "mason") },
+        { "<leader>h", group = "help", icon = get_icon("filetype", "help") },
+
+              -- Top-level leader mappings
+              { "<leader>,", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Switch Buffer" },
+              { "<leader><space>", "<cmd>Telescope live_grep<cr>", desc = "Grep (Root Dir)" },
+              { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+              { "<leader>/", "<cmd>Telescope find_files<cr>", desc = "Find Files (Root Dir)" },
+
+              -- Find
+        { "<leader>f", group = "Find", icon = get_icon("filetype", "telescopeprompt") },
+              { "<leader>fb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true ignore_current_buffer=true<cr>", desc = "Buffers" },
+              { "<leader>fc", desc = "Find Config File" },
+              { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files (Root Dir)" },
+              { "<leader>fF", "<cmd>Telescope find_files cwd=%:p:h<cr>", desc = "Find Files (cwd)" },
+              { "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Find Files (git-files)" },
+              { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
+              { "<leader>fR", "<cmd>Telescope oldfiles cwd_only=true<cr>", desc = "Recent (cwd)" },
+
+
+              -- Search
+              { "<leader>s", group = "Search" },
+              { "<leader>s\"", "<cmd>Telescope registers<cr>", desc = "Registers" },
+              { "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },
+              { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
+              { "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+              { "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
+              { "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Document Diagnostics" },
+              { "<leader>sD", "<cmd>Telescope diagnostics<cr>", desc = "Workspace Diagnostics" },
+              { "<leader>sg", "<cmd>Telescope live_grep<cr>", desc = "Grep (Root Dir)" },
+              { "<leader>sG", "<cmd>Telescope live_grep search_dirs={'.'}<cr>", desc = "Grep (cwd)" },
+              { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
+              { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
+              { "<leader>sj", "<cmd>Telescope jumplist<cr>", desc = "Jumplist" },
+              { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
+              { "<leader>sl", "<cmd>Telescope loclist<cr>", desc = "Location List" },
+              { "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
+              { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
+              { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
+              { "<leader>sR", "<cmd>Telescope resume<cr>", desc = "Resume" },
+              { "<leader>sq", "<cmd>Telescope quickfix<cr>", desc = "Quickfix List" },
+              { "<leader>ss", desc = "Goto Symbol" },
+              { "<leader>sS", desc = "Goto Symbol (Workspace)" },
+              { "<leader>sw", "<cmd>Telescope grep_string<cr>", desc = "Word (Root Dir)" },
+              { "<leader>sW", "<cmd>Telescope grep_string search_dirs={'.'}<cr>", desc = "Word (cwd)" },
+              { "<leader>sw", "<cmd>Telescope grep_string<cr>", desc = "Selection (Root Dir)", mode = "v" },
+              { "<leader>sW", "<cmd>Telescope grep_string search_dirs={'.'}<cr>", desc = "Selection (cwd)", mode = "v" },
+
+              -- UI
+              { "<leader>u", group = "UI" },
+              { "<leader>uC", "<cmd>Telescope colorscheme enable_preview=true<cr>", desc = "Colorscheme with Preview" },
+
+              -- LSP Goto mappings
+              { "g", group = "Goto" },
+              { "gd", "<cmd>Telescope lsp_definitions reuse_win=true<cr>", desc = "Goto Definition" },
+              { "gr", "<cmd>Telescope lsp_references<cr>", desc = "References" },
+              { "gI", "<cmd>Telescope lsp_implementations reuse_win=true<cr>", desc = "Goto Implementation" },
+              { "gy", "<cmd>Telescope lsp_type_definitions reuse_win=true<cr>", desc = "Goto T[y]pe Definition" },
+            })
+      ''}
+    '';
     vim.luaConfigRC.telescope = nvim.dag.entryAnywhere ''
       local telescope = require('telescope')
       local actions = require('telescope.actions')
@@ -117,7 +201,7 @@ in {
       local function flash(prompt_bufnr)
         local flash_ok, flash = pcall(require, "flash")
         if not flash_ok then return end
-        
+
         flash.jump({
           pattern = "^",
           label = { after = { 0, 0 } },
@@ -193,6 +277,17 @@ in {
       -- Load fzf extension if available
       pcall(telescope.load_extension, "fzf")
 
+      -- Setup search plugin
+      local search_ok, search = pcall(require, "search")
+      if search_ok then
+        search.setup({
+          mappings = { -- optional: configure the mappings for switching tabs (will be set in normal and insert mode(!))
+            next = "<Tab>",
+            prev = "<S-Tab>"
+          },
+        })
+      end
+
       -- LSP document symbols function
       vim.keymap.set("n", "<leader>ss", function()
         require("telescope.builtin").lsp_document_symbols({
@@ -203,11 +298,11 @@ in {
         })
       end, { desc = "Goto Symbol" })
 
-      -- LSP workspace symbols function  
+      -- LSP workspace symbols function
       vim.keymap.set("n", "<leader>sS", function()
         require("telescope.builtin").lsp_dynamic_workspace_symbols({
           symbols = {
-            "Class", "Function", "Method", "Constructor", "Interface", 
+            "Class", "Function", "Method", "Constructor", "Interface",
             "Module", "Struct", "Trait", "Field", "Property"
           }
         })
@@ -244,6 +339,9 @@ in {
           },
         })
       end
+
+      local builtin = require('telescope.builtin')
+
     '';
   };
 }

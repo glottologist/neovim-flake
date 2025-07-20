@@ -14,6 +14,8 @@ with lib; let
     "dressing-nvim"
     "telescope"
     "telescope-fzf-native"
+    "search"
+    "telescope-media-files"
 
     # KEYS
     "cheatsheet-nvim"
@@ -36,7 +38,7 @@ with lib; let
     # CODE
 
     ## AI
-    "windsurf"
+    "windsurf-nvim"
 
     ## LSP
     "nvim-lspconfig"
@@ -85,6 +87,11 @@ with lib; let
     "flash-nvim"
     "eyeliner"
     "mini-nvim"
+    "nvim-spider"
+    "harpoon"
+    "tide"
+    "twilight"
+    "zenmode"
 
     ## Visuals
     "fidget-nvim"

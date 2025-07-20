@@ -5,28 +5,7 @@
   ...
 }:
 with lib;
-with builtins; let
-  cfg = config.vim.autocomplete;
-  lspkindEnabled = config.vim.lsp.enable && config.vim.lsp.lspkind.enable;
-  builtSources =
-    concatMapStringsSep
-    ", "
-    (n: "'${n}'")
-    (attrNames cfg.sources);
-  builtMaps =
-    concatStringsSep
-    "\n"
-    (mapAttrsToList
-      (n: v:
-        if v == null
-        then ""
-        else "${n} = '${v}',")
-      cfg.sources);
-  dagPlacement =
-    if lspkindEnabled
-    then nvim.dag.entryAfter ["lspkind"]
-    else nvim.dag.entryAnywhere;
-in {
+with builtins;  {
   options.vim.code.completion = {
     blinkCmp = {
       enable = mkOption {

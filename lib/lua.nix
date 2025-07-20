@@ -1,5 +1,10 @@
 # Helpers for converting values to lua
 {lib}: {
+  writeIf = cond: msg:
+    if cond
+    then msg
+    else "";
+
   yesNo = value:
     if value
     then "yes"

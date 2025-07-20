@@ -54,7 +54,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-utils.url = "github:numtide/flake-utils";
 
-    # BASOC
+    # BASIC
     plenary-nvim = {
       # (required by crates-nvim)
       url = "github:nvim-lua/plenary.nvim";
@@ -128,14 +128,21 @@
       url = "github:nvim-telescope/telescope.nvim";
       flake = false;
     };
-
     telescope-fzf-native = {
       url = "github:nvim-telescope/telescope-fzf-native.nvim";
       flake = false;
     };
-
     dressing-nvim = {
       url = "github:stevearc/dressing.nvim";
+      flake = false;
+    };
+    telescope-media-files = {
+      url = github:nvim-telescope/telescope-media-files.nvim;
+      flake = false;
+    };
+
+    search = {
+      url = github:FabianWirth/search.nvim;
       flake = false;
     };
 
@@ -163,7 +170,7 @@
     # CODE
 
     ## AI
-    windsurf = {
+    windsurf-nvim = {
       url = "github:Exafunction/windsurf.vim";
       flake = false;
     };
@@ -301,6 +308,26 @@
     };
     mini-nvim = {
       url = "github:echasnovski/mini.nvim";
+      flake = false;
+    };
+    nvim-spider = {
+      url = "github:chrisgrieser/nvim-spider";
+      flake = false;
+    };
+    harpoon = {
+      url = "github:ThePrimeagen/harpoon?ref=harpoon2";
+      flake = false;
+    };
+    tide = {
+      url = github:jackMort/tide.nvim;
+      flake = false;
+    };
+    twilight = {
+      url = github:folke/twilight.nvim;
+      flake = false;
+    };
+    zenmode = {
+      url = github:folke/zen-mode.nvim;
       flake = false;
     };
 

@@ -5,30 +5,7 @@
   ...
 }:
 with lib;
-with builtins; let
-  cfg = config.vim.code.completion;
-  lspkindEnabled = config.vim.code.lsp.enable && config.vim.code.lsp.lspkind.enable;
-  builtSources =
-    concatMapStringsSep
-    "\n"
-    (n: "{ name = '${n}'},")
-    (attrNames cfg.sources);
-
-  builtMaps =
-    concatStringsSep
-    "\n"
-    (mapAttrsToList
-      (n: v:
-        if v == null
-        then ""
-        else "${n} = '${v}',")
-      cfg.sources);
-
-  dagPlacement =
-    if lspkindEnabled
-    then nvim.dag.entryAfter ["lspkind"]
-    else nvim.dag.entryAnywhere;
-in {
+with builtins; {
   options.vim.code.completion = {
     nvimCmp = {
       enable = mkOption {
@@ -48,7 +25,8 @@ in {
           Note: only use a single attribute name per attribute set
         '';
         type = with types; attrsOf (nullOr str);
-        default = {};
+        default = {
+        };
         example = ''
           {nvim-cmp = null; buffer = "[Buffer]";}
         '';
