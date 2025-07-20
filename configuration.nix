@@ -110,8 +110,8 @@ inputs: let
             windsurf.enable = true;
           };
           completion = {
-            nvimCmp.enable = false;
-            blinkCmp.enable = true;
+            nvimCmp.enable = true;
+            blinkCmp.enable = false;
           };
           lsp = {
             enable = true;
