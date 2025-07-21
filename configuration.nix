@@ -28,9 +28,9 @@ inputs: let
 
         # EXPLORER
         explorer = {
-          # These are mutually explusive.  Only enable one or the other
-          neotree.enable = false;
-          nvimtree.enable = true;
+          # These are mutually exclusive.  Only enable one or the other
+          neotree.enable = true;
+          nvimtree.enable = false;
         };
 
         # STATUS
