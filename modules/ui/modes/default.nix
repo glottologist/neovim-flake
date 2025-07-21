@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./modes.nix
+    ./options.nix
     ./config.nix
   ];
 }

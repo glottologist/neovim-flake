@@ -1,6 +1,6 @@
 _: {
   imports = [
     ./config.nix
-    ./blink-cmp.nix
+    ./options.nix
   ];
 }

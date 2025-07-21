@@ -1,6 +1,6 @@
 _: {
   imports = [
     ./config.nix
-    ./lspconfig.nix
+    ./options.nix
   ];
 }

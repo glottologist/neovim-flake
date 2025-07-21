@@ -14,19 +14,6 @@ in {
       "nvim-cmp"
     ];
 
-    # vim.luaConfigRC.windsurf-keys = nvim.dag.entryAnywhere ''
-    #   ${nvim.lua.writeIf config.vim.keys.whichKey.enable ''
-    #     require('mini.icons').setup()
-    #       local mini_icons = require('mini.icons')
-    #       local get_icon = function(category, name)
-    #         local icon, hl = mini_icons.get(category, name)
-    #         return icon
-    #       end
-    #         require("which-key").add({
-    #
-    #})
-    #   ''}
-    # '';
     vim.luaConfigRC.windsurf-keys = nvim.dag.entryAnywhere ''
       ${nvim.lua.writeIf config.vim.keys.whichKey.enable ''
                require('mini.icons').setup()

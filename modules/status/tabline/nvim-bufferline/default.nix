@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./nvim-bufferline.nix
+    ./options.nix
     ./config.nix
   ];
 }

@@ -1,6 +1,6 @@
 {...}: {
   imports = [
     ./config.nix
-    ./git.nix
+    ./options.nix
   ];
 }

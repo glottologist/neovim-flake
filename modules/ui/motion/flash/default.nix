@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./flash.nix
+    ./options.nix
     ./config.nix
   ];
 }

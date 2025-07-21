@@ -1,6 +1,6 @@
 {...}: {
   imports = [
-    ./treesitter.nix
+    ./options.nix
     ./context.nix
     ./config.nix
   ];

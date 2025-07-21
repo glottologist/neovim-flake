@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./harpoon.nix
+    ./options.nix
     ./config.nix
   ];
 }

@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./trouble.nix
+    ./options.nix
     ./config.nix
   ];
 }

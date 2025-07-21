@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./telescope-media-files.nix
+    ./options.nix
     ./config.nix
   ];
 }

@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./mini.nix
+    ./options.nix
     ./config.nix
   ];
 }

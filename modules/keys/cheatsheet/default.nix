@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./cheatsheet.nix
+    ./options.nix
     ./config.nix
   ];
 }

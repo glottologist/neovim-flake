@@ -1,6 +1,6 @@
 _: {
   imports = [
     ./config.nix
-    ./windsurf.nix
+    ./options.nix
   ];
 }

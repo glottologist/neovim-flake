@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./lualine.nix
+    ./options.nix
     ./config.nix
   ];
 }

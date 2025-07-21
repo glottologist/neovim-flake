@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./spider.nix
+    ./options.nix
     ./config.nix
   ];
 }

@@ -1,6 +1,6 @@
 _: {
   imports = [
     ./config.nix
-    ./nvim-notify.nix
+    ./options.nix
   ];
 }

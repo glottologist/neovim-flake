@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./which-key.nix
+    ./options.nix
     ./config.nix
   ];
 }

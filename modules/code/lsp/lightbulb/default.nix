@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./lightbulb.nix
+    ./options.nix
     ./config.nix
   ];
 }

@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./eyeliner.nix
+    ./options.nix
     ./config.nix
   ];
 }

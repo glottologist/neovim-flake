@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./noice.nix
+    ./options.nix
     ./config.nix
   ];
 }

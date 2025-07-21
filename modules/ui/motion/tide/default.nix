@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./tide.nix
+    ./options.nix
     ./config.nix
   ];
 }

@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./telescope.nix
+    ./options.nix
     ./config.nix
   ];
 }

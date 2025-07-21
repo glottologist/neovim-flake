@@ -1,6 +1,6 @@
 _: {
   imports = [
     ./config.nix
-    ./neotree.nix
+    ./options.nix
   ];
 }

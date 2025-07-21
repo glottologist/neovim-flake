@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./lsp-signature.nix
+    ./options.nix
     ./config.nix
   ];
 }
