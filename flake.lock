@@ -853,6 +853,22 @@
         "type": "github"
       }
     },
+    "nvim-ufo": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1749475118,
+        "narHash": "sha256-ZHxkct0GbHsxdlW/JxT0FYDFlErI47yWTrXuOx00k+c=",
+        "owner": "kevinhwang91",
+        "repo": "nvim-ufo",
+        "rev": "80fe8215ba566df2fbf3bf4d25f59ff8f41bc0e1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kevinhwang91",
+        "repo": "nvim-ufo",
+        "type": "github"
+      }
+    },
     "nvim-web-devicons": {
       "flake": false,
       "locked": {
@@ -933,6 +949,22 @@
         "type": "github"
       }
     },
+    "promise-async": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1722813441,
+        "narHash": "sha256-9eM66brPjiFlY64vmBetRYrKnpDyN7+/URMm4GsGimA=",
+        "owner": "kevinhwang91",
+        "repo": "promise-async",
+        "rev": "119e8961014c9bfaf1487bf3c2a393d254f337e2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kevinhwang91",
+        "repo": "promise-async",
+        "type": "github"
+      }
+    },
     "rnix-lsp": {
       "inputs": {
         "naersk": "naersk",
@@ -1000,11 +1032,13 @@
         "nvim-spider": "nvim-spider",
         "nvim-treesitter": "nvim-treesitter",
         "nvim-treesitter-context": "nvim-treesitter-context",
+        "nvim-ufo": "nvim-ufo",
         "nvim-web-devicons": "nvim-web-devicons",
         "nvimtree": "nvimtree",
         "onedark": "onedark",
         "papercolor": "papercolor",
         "plenary-nvim": "plenary-nvim",
+        "promise-async": "promise-async",
         "rnix-lsp": "rnix-lsp",
         "rust-tools": "rust-tools",
         "search": "search",

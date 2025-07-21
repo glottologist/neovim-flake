@@ -179,6 +179,16 @@
       flake = false;
     };
 
+    ## FOLDS
+    nvim-ufo = {
+      url = github:kevinhwang91/nvim-ufo;
+      flake = false;
+    };
+    promise-async = {
+      url = github:kevinhwang91/promise-async; # required by nvim-ufo
+      flake = false;
+    };
+
     ## LSP
     nvim-lspconfig = {
       url = "github:neovim/nvim-lspconfig";

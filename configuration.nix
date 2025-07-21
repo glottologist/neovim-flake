@@ -29,8 +29,8 @@ inputs: let
         # EXPLORER
         explorer = {
           # These are mutually exclusive.  Only enable one or the other
-          neotree.enable = true;
-          nvimtree.enable = false;
+          neotree.enable = false;
+          nvimtree.enable = true;
         };
 
         # STATUS
@@ -89,7 +89,7 @@ inputs: let
           visuals = {
             enable = true;
             ccc.enable = true;
-            fidget.enable = false;
+            fidget.enable = true;
             indentBlankline = {
               enable = true;
               fillChar = null;
@@ -111,6 +111,9 @@ inputs: let
           ai = {
             windsurf.enable = true;
           };
+          folds = {
+            ufo.enable = true;
+          };
           completion = {
             nvimCmp.enable = true;
             blinkCmp.enable = false;
@@ -127,7 +130,7 @@ inputs: let
           };
           treesitter = {
             enable = true;
-            fold = false;
+            fold = true;
           };
 
           languages = {

@@ -41,6 +41,10 @@ with lib; let
     ## AI
     "windsurf-nvim"
 
+    ## FOLDS
+    "nvim-ufo"
+    "promise-async"
+
     ## LSP
     "nvim-lspconfig"
     "nvim-lightbulb"
