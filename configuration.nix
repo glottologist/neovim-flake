@@ -52,6 +52,7 @@ inputs: let
           name = "tokyonight";
           style = "day";
           transparent = false;
+          dependencies = ["lush"];
         };
 
         # FIND
@@ -87,7 +88,8 @@ inputs: let
           };
           visuals = {
             enable = true;
-            fidget.enable = true;
+            ccc.enable = true;
+            fidget.enable = false;
             indentBlankline = {
               enable = true;
               fillChar = null;

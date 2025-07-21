@@ -10,6 +10,13 @@ in {
   options.vim.ui.visuals = {
     enable = mkEnableOption "Visual enhancements.";
 
+    ccc = {
+      enable = mkOption {
+        type = types.bool;
+        description = "Enable Create Colour Code plugin";
+        default = false;
+      };
+    };
     fidget = {
       enable = mkOption {
         type = types.bool;

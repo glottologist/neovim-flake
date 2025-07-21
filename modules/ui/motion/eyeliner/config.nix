@@ -21,5 +21,24 @@ in {
       }
       
     '';
+
+      vim.luaConfigRC.eyeliner-keys = nvim.dag.entryAnywhere ''
+        ${nvim.lua.writeIf config.vim.keys.whichKey.enable ''
+          require('mini.icons').setup()
+          local mini_icons = require('mini.icons')
+          local get_icon = function(category, name)
+            local icon, hl = mini_icons.get(category, name)
+            return icon
+          end
+
+          require("which-key").add({
+            -- Motion/UI group (if not already defined)
+            { "<leader>u", group = "UI/Motion", icon = get_icon("lsp", "interface") },
+            
+            -- Eyeliner toggle
+            { "<leader>ue", "<cmd>EyelinerToggle<CR>", desc = "Toggle Eyeliner", icon = get_icon("lsp", "event") },
+          })
+        ''}
+      '';
   };
 }

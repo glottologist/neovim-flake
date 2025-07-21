@@ -9,14 +9,33 @@ with builtins; let
 in {
   config = mkIf cfg.enable {
     vim.startPlugins = ["nvimtree"];
+    vim.luaConfigRC.nvimtree-keys = nvim.dag.entryAnywhere ''
+      ${nvim.lua.writeIf config.vim.keys.whichKey.enable ''
+        require('mini.icons').setup()
+        local mini_icons = require('mini.icons')
+        local get_icon = function(category, name)
+          local icon, hl = mini_icons.get(category, name)
+          return icon
+        end
 
+        require("which-key").add({
+          { "<leader>t", group = "Explorer", icon = get_icon("default", "directory") },
+
+          -- Tree commands
+          { "<leader>E", "<cmd>NvimTreeToggle<CR>", desc = "Toggle tree", icon = get_icon("default", "directory") },
+          { "<leader>er", "<cmd>NvimTreeRefresh<CR>", desc = "Refresh tree", icon = get_icon("lsp", "method") },
+          { "<leader>eg", "<cmd>NvimTreeFindFile<CR>", desc = "Find file in tree", icon = get_icon("lsp", "reference") },
+          { "<leader>ef", "<cmd>NvimTreeFocus<CR>", desc = "Focus tree", icon = get_icon("lsp", "event") },
+        })
+      ''}
+
+    '';
     vim.luaConfigRC.nvimtreelua = nvim.dag.entryAnywhere ''
-        local opts = { silent = true, noremap = true }
-
-        vim.api.nvim_set_keymap("n", "<leader>tt", ":NvimTreeToggle<cr>", opts)
-        vim.api.nvim_set_keymap("n", "<leader>tr", ":NvimTreeRefresh<cr>", opts)
-        vim.api.nvim_set_keymap("n", "<leader>tg", ":NvimTreeFindFile<cr>", opts)
-        vim.api.nvim_set_keymap("n", "<leader>tf", ":NvimTreeFocus<cr>", opts)
+      local opts = { silent = true, noremap = true }
+      vim.api.nvim_set_keymap("n", "<leader>E", ":NvimTreeToggle<cr>", opts)
+      vim.api.nvim_set_keymap("n", "<leader>er", ":NvimTreeRefresh<cr>", opts)
+      vim.api.nvim_set_keymap("n", "<leader>eg", ":NvimTreeFindFile<cr>", opts)
+      vim.api.nvim_set_keymap("n", "<leader>ef", ":NvimTreeFocus<cr>", opts)
 
         local function open_nvim_tree(data)
             local IGNORED_FT = {

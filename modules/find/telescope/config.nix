@@ -26,37 +26,33 @@ in {
       # Find commands
       "<leader>fb" = "<cmd>Telescope buffers sort_mru=true sort_lastused=true ignore_current_buffer=true<cr>";
       "<leader>ff" = "<cmd>Telescope find_files<cr>";
-      "<leader>Ff" = "<cmd>Telescope find_files cwd=%:p:h<cr>";
+      "<leader>fF" = "<cmd>Telescope find_files cwd=%:p:h<cr>";
       "<leader>fg" = "<cmd>Telescope git_files<cr>";
-      "<leader>fr" = "<cmd>Telescope oldfiles<cr>";
-      "<leader>Fr" = "<cmd>Telescope oldfiles cwd_only=true<cr>";
+      "<leader>fo" = "<cmd>Telescope oldfiles<cr>";
+      "<leader>fO" = "<cmd>Telescope oldfiles cwd_only=true<cr>";
 
-      # Git commands
-      "<leader>gc" = "<cmd>Telescope git_commits<cr>";
-      "<leader>gs" = "<cmd>Telescope git_status<cr>";
-
-      # Search commands
-      "<leader>s\"" = "<cmd>Telescope registers<cr>";
-      "<leader>sa" = "<cmd>Telescope autocommands<cr>";
-      "<leader>sb" = "<cmd>Telescope current_buffer_fuzzy_find<cr>";
-      "<leader>sc" = "<cmd>Telescope command_history<cr>";
-      "<leader>sC" = "<cmd>Telescope commands<cr>";
-      "<leader>sd" = "<cmd>Telescope diagnostics bufnr=0<cr>";
-      "<leader>sD" = "<cmd>Telescope diagnostics<cr>";
-      "<leader>sg" = "<cmd>Telescope live_grep<cr>";
-      "<leader>sG" = "<cmd>Telescope live_grep search_dirs={'.'}<cr>";
-      "<leader>sh" = "<cmd>Telescope help_tags<cr>";
-      "<leader>sH" = "<cmd>Telescope highlights<cr>";
-      "<leader>sj" = "<cmd>Telescope jumplist<cr>";
-      "<leader>sk" = "<cmd>Telescope keymaps<cr>";
-      "<leader>sl" = "<cmd>Telescope loclist<cr>";
-      "<leader>sM" = "<cmd>Telescope man_pages<cr>";
-      "<leader>sm" = "<cmd>Telescope marks<cr>";
-      "<leader>so" = "<cmd>Telescope vim_options<cr>";
-      "<leader>sR" = "<cmd>Telescope resume<cr>";
-      "<leader>sq" = "<cmd>Telescope quickfix<cr>";
-      "<leader>sw" = "<cmd>Telescope grep_string<cr>";
-      "<leader>sW" = "<cmd>Telescope grep_string search_dirs={'.'}<cr>";
+      "<leader>f\"" = "<cmd>Telescope registers<cr>";
+      "<leader>fa" = "<cmd>Telescope autocommands<cr>";
+      "<leader>fB" = "<cmd>Telescope current_buffer_fuzzy_find<cr>";
+      "<leader>fc" = "<cmd>Telescope command_history<cr>";
+      "<leader>fC" = "<cmd>Telescope commands<cr>";
+      "<leader>fd" = "<cmd>Telescope diagnostics bufnr=0<cr>";
+      "<leader>fD" = "<cmd>Telescope diagnostics<cr>";
+      "<leader>fr" = "<cmd>Telescope live_grep<cr>";
+      "<leader>fG" = "<cmd>Telescope live_grep search_dirs={'.'}<cr>";
+      "<leader>fh" = "<cmd>Telescope help_tags<cr>";
+      "<leader>fH" = "<cmd>Telescope highlights<cr>";
+      "<leader>fj" = "<cmd>Telescope jumplist<cr>";
+      "<leader>fk" = "<cmd>Telescope keymaps<cr>";
+      "<leader>fl" = "<cmd>Telescope loclist<cr>";
+      "<leader>fM" = "<cmd>Telescope man_pages<cr>";
+      "<leader>fm" = "<cmd>Telescope marks<cr>";
+      "<leader>fv" = "<cmd>Telescope vim_options<cr>";
+      "<leader>fR" = "<cmd>Telescope resume<cr>";
+      "<leader>fq" = "<cmd>Telescope quickfix<cr>";
+      "<leader>fw" = "<cmd>Telescope grep_string<cr>";
+      "<leader>fW" = "<cmd>Telescope grep_string search_dirs={'.'}<cr>";
+      # UI
       "<leader>uC" = "<cmd>Telescope colorscheme enable_preview=true<cr>";
 
       # LSP commands (if LSP is enabled)
@@ -67,93 +63,77 @@ in {
     };
 
     vim.vnoremap = {
-      "<leader>sw" = "<cmd>Telescope grep_string<cr>";
-      "<leader>sW" = "<cmd>Telescope grep_string search_dirs={'.'}<cr>";
+      "<leader>fw" = "<cmd>Telescope grep_string<cr>";
+      "<leader>fW" = "<cmd>Telescope grep_string search_dirs={'.'}<cr>";
     };
 
     vim.luaConfigRC.telescope-keys = nvim.dag.entryAnywhere ''
       ${nvim.lua.writeIf config.vim.keys.whichKey.enable ''
         require('mini.icons').setup()
-          local mini_icons = require('mini.icons')
-          local get_icon = function(category, name)
-            local icon, hl = mini_icons.get(category, name)
-            return icon
-          end
-            require("which-key").add({
+        local mini_icons = require('mini.icons')
+        local get_icon = function(category, name)
+          local icon, hl = mini_icons.get(category, name)
+          return icon
+        end
 
-        { "<leader>b", group = "buffer", icon = get_icon("default", "file") },
-        { "<leader>l", group = "lsp", icon = get_icon("lsp", "method") },
-        { "<leader>w", group = "window", icon = get_icon("default", "directory") },
-        { "<leader>s", group = "search", icon = get_icon("filetype", "query") },
-        { "<leader>t", group = "toggle", icon = get_icon("lsp", "boolean") },
-        { "<leader>c", group = "code", icon = get_icon("lsp", "class") },
-        { "<leader>d", group = "debug", icon = get_icon("filetype", "dapui_breakpoints") },
-        { "<leader>n", group = "notes", icon = get_icon("filetype", "markdown") },
+        require("which-key").add({
+          -- Top-level leader mappings
+          { "<leader>,", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Switch Buffer", icon = get_icon("default", "file") },
+          { "<leader><space>", "<cmd>Telescope live_grep<cr>", desc = "Grep (Root Dir)", icon = get_icon("filetype", "query") },
+          { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History", icon = get_icon("lsp", "method") },
+          { "<leader>/", "<cmd>Telescope find_files<cr>", desc = "Find Files (Root Dir)", icon = get_icon("filetype", "telescopeprompt") },
 
-        -- You can also use other categories
-        { "<leader>o", group = "open", icon = get_icon("directory", "nvim") },
-        { "<leader>r", group = "run", icon = get_icon("extension", "exe") },
-        { "<leader>p", group = "packages", icon = get_icon("filetype", "mason") },
-        { "<leader>h", group = "help", icon = get_icon("filetype", "help") },
+          -- Find group
+          { "<leader>f", group = "Find", icon = get_icon("filetype", "telescopeprompt") },
+          { "<leader>f\"", "<cmd>Telescope registers<cr>", desc = "Registers", icon = get_icon("lsp", "string") },
+          { "<leader>fB", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer (Fuzzy)", icon = get_icon("default", "file") },
+          { "<leader>fC", "<cmd>Telescope commands<cr>", desc = "Commands", icon = get_icon("lsp", "method") },
+          { "<leader>fD", "<cmd>Telescope diagnostics<cr>", desc = "Workspace Diagnostics", icon = get_icon("lsp", "event") },
+          { "<leader>fF", "<cmd>Telescope find_files cwd=%:p:h<cr>", desc = "Find Files (cwd)", icon = get_icon("default", "file") },
+          { "<leader>fG", "<cmd>Telescope live_grep search_dirs={'.'}<cr>", desc = "Grep (cwd)", icon = get_icon("filetype", "query") },
+          { "<leader>fH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups", icon = get_icon("lsp", "color") },
+          { "<leader>fM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages", icon = get_icon("filetype", "man") },
+          { "<leader>fO", "<cmd>Telescope oldfiles cwd_only=true<cr>", desc = "Recent (cwd)", icon = get_icon("lsp", "file") },
+          { "<leader>fR", "<cmd>Telescope resume<cr>", desc = "Resume", icon = get_icon("lsp", "reference") },
+          { "<leader>fS", desc = "Goto Symbol (Workspace)", icon = get_icon("lsp", "class") },
+          { "<leader>fW", "<cmd>Telescope grep_string search_dirs={'.'}<cr>", desc = "Word (cwd)", icon = get_icon("lsp", "string") },
+          { "<leader>fa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands", icon = get_icon("lsp", "event") },
+          { "<leader>fb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true ignore_current_buffer=true<cr>", desc = "Buffers", icon = get_icon("default", "file") },
+          { "<leader>fc", "<cmd>Telescope command_history<cr>", desc = "Command History", icon = get_icon("lsp", "method") },
+          { "<leader>fd", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Document Diagnostics", icon = get_icon("lsp", "event") },
+          { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files (Root Dir)", icon = get_icon("default", "file") },
+          { "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Find Files (git-files)", icon = get_icon("filetype", "git") },
+          { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages", icon = get_icon("filetype", "help") },
+          { "<leader>fj", "<cmd>Telescope jumplist<cr>", desc = "Jumplist", icon = get_icon("lsp", "reference") },
+          { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps", icon = get_icon("lsp", "keyword") },
+          { "<leader>fl", "<cmd>Telescope loclist<cr>", desc = "Location List", icon = get_icon("lsp", "reference") },
+          { "<leader>fm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark", icon = get_icon("lsp", "reference") },
+          { "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "Recent", icon = get_icon("lsp", "file") },
+          { "<leader>fq", "<cmd>Telescope quickfix<cr>", desc = "Quickfix List", icon = get_icon("lsp", "reference") },
+          { "<leader>fr", "<cmd>Telescope live_grep<cr>", desc = "Grep (Root Dir)", icon = get_icon("filetype", "query") },
+          { "<leader>fs", desc = "Goto Symbol", icon = get_icon("lsp", "class") },
+          { "<leader>fv", "<cmd>Telescope vim_options<cr>", desc = "Options", icon = get_icon("lsp", "property") },
+          { "<leader>fw", "<cmd>Telescope grep_string<cr>", desc = "Word (Root Dir)", icon = get_icon("lsp", "string") },
 
-              -- Top-level leader mappings
-              { "<leader>,", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Switch Buffer" },
-              { "<leader><space>", "<cmd>Telescope live_grep<cr>", desc = "Grep (Root Dir)" },
-              { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-              { "<leader>/", "<cmd>Telescope find_files<cr>", desc = "Find Files (Root Dir)" },
-
-              -- Find
-        { "<leader>f", group = "Find", icon = get_icon("filetype", "telescopeprompt") },
-              { "<leader>fb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true ignore_current_buffer=true<cr>", desc = "Buffers" },
-              { "<leader>fc", desc = "Find Config File" },
-              { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files (Root Dir)" },
-              { "<leader>fF", "<cmd>Telescope find_files cwd=%:p:h<cr>", desc = "Find Files (cwd)" },
-              { "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Find Files (git-files)" },
-              { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
-              { "<leader>fR", "<cmd>Telescope oldfiles cwd_only=true<cr>", desc = "Recent (cwd)" },
+          -- Visual mode find mappings
+          { "<leader>fw", "<cmd>Telescope grep_string<cr>", desc = "Selection (Root Dir)", mode = "v", icon = get_icon("lsp", "string") },
+          { "<leader>fW", "<cmd>Telescope grep_string search_dirs={'.'}<cr>", desc = "Selection (cwd)", mode = "v", icon = get_icon("lsp", "string") },
 
 
-              -- Search
-              { "<leader>s", group = "Search" },
-              { "<leader>s\"", "<cmd>Telescope registers<cr>", desc = "Registers" },
-              { "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },
-              { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
-              { "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-              { "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
-              { "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Document Diagnostics" },
-              { "<leader>sD", "<cmd>Telescope diagnostics<cr>", desc = "Workspace Diagnostics" },
-              { "<leader>sg", "<cmd>Telescope live_grep<cr>", desc = "Grep (Root Dir)" },
-              { "<leader>sG", "<cmd>Telescope live_grep search_dirs={'.'}<cr>", desc = "Grep (cwd)" },
-              { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
-              { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
-              { "<leader>sj", "<cmd>Telescope jumplist<cr>", desc = "Jumplist" },
-              { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
-              { "<leader>sl", "<cmd>Telescope loclist<cr>", desc = "Location List" },
-              { "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
-              { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
-              { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
-              { "<leader>sR", "<cmd>Telescope resume<cr>", desc = "Resume" },
-              { "<leader>sq", "<cmd>Telescope quickfix<cr>", desc = "Quickfix List" },
-              { "<leader>ss", desc = "Goto Symbol" },
-              { "<leader>sS", desc = "Goto Symbol (Workspace)" },
-              { "<leader>sw", "<cmd>Telescope grep_string<cr>", desc = "Word (Root Dir)" },
-              { "<leader>sW", "<cmd>Telescope grep_string search_dirs={'.'}<cr>", desc = "Word (cwd)" },
-              { "<leader>sw", "<cmd>Telescope grep_string<cr>", desc = "Selection (Root Dir)", mode = "v" },
-              { "<leader>sW", "<cmd>Telescope grep_string search_dirs={'.'}<cr>", desc = "Selection (cwd)", mode = "v" },
+          -- UI group
+          { "<leader>u", group = "UI", icon = get_icon("lsp", "color") },
+          { "<leader>uC", "<cmd>Telescope colorscheme enable_preview=true<cr>", desc = "Colorscheme with Preview", icon = get_icon("lsp", "color") },
 
-              -- UI
-              { "<leader>u", group = "UI" },
-              { "<leader>uC", "<cmd>Telescope colorscheme enable_preview=true<cr>", desc = "Colorscheme with Preview" },
-
-              -- LSP Goto mappings
-              { "g", group = "Goto" },
-              { "gd", "<cmd>Telescope lsp_definitions reuse_win=true<cr>", desc = "Goto Definition" },
-              { "gr", "<cmd>Telescope lsp_references<cr>", desc = "References" },
-              { "gI", "<cmd>Telescope lsp_implementations reuse_win=true<cr>", desc = "Goto Implementation" },
-              { "gy", "<cmd>Telescope lsp_type_definitions reuse_win=true<cr>", desc = "Goto T[y]pe Definition" },
-            })
+          -- LSP Goto mappings
+          { "g", group = "Goto", icon = get_icon("lsp", "reference") },
+          { "gd", "<cmd>Telescope lsp_definitions reuse_win=true<cr>", desc = "Goto Definition", icon = get_icon("lsp", "method") },
+          { "gr", "<cmd>Telescope lsp_references<cr>", desc = "References", icon = get_icon("lsp", "reference") },
+          { "gI", "<cmd>Telescope lsp_implementations reuse_win=true<cr>", desc = "Goto Implementation", icon = get_icon("lsp", "interface") },
+          { "gy", "<cmd>Telescope lsp_type_definitions reuse_win=true<cr>", desc = "Goto T[y]pe Definition", icon = get_icon("lsp", "class") },
+        })
       ''}
     '';
+
     vim.luaConfigRC.telescope = nvim.dag.entryAnywhere ''
       local telescope = require('telescope')
       local actions = require('telescope.actions')
@@ -289,7 +269,7 @@ in {
       end
 
       -- LSP document symbols function
-      vim.keymap.set("n", "<leader>ss", function()
+      vim.keymap.set("n", "<leader>fs", function()
         require("telescope.builtin").lsp_document_symbols({
           symbols = {
             "Class", "Function", "Method", "Constructor", "Interface",
@@ -299,7 +279,7 @@ in {
       end, { desc = "Goto Symbol" })
 
       -- LSP workspace symbols function
-      vim.keymap.set("n", "<leader>sS", function()
+      vim.keymap.set("n", "<leader>fS", function()
         require("telescope.builtin").lsp_dynamic_workspace_symbols({
           symbols = {
             "Class", "Function", "Method", "Constructor", "Interface",
@@ -341,7 +321,6 @@ in {
       end
 
       local builtin = require('telescope.builtin')
-
     '';
   };
 }

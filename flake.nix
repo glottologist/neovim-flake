@@ -122,6 +122,10 @@
       url = "github:vim-scripts/PaperColor.vim";
       flake = false;
     };
+    lush = {
+      url = "github:rktjmp/lush.nvim";
+      flake = false;
+    };
 
     # FIND
     telescope = {
@@ -322,22 +326,26 @@
       url = github:jackMort/tide.nvim;
       flake = false;
     };
-    twilight = {
-      url = github:folke/twilight.nvim;
-      flake = false;
-    };
-    zenmode = {
-      url = github:folke/zen-mode.nvim;
-      flake = false;
-    };
 
     ## Visuals
+    ccc-nvim = {
+      url = "github:uga-rosa/ccc.nvim";
+      flake = false;
+    };
     fidget-nvim = {
       url = "github:j-hui/fidget.nvim";
       flake = false;
     };
     indent-blankline = {
       url = "github:lukas-reineke/indent-blankline.nvim";
+      flake = false;
+    };
+    twilight = {
+      url = github:folke/twilight.nvim;
+      flake = false;
+    };
+    zenmode = {
+      url = github:folke/zen-mode.nvim;
       flake = false;
     };
   };

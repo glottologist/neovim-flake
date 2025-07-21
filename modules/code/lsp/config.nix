@@ -14,6 +14,44 @@ in {
 
     vim.completion.sources = {"nvim_lsp" = "[LSP]";};
 
+vim.luaConfigRC.lsp-keys = nvim.dag.entryAnywhere ''
+        ${nvim.lua.writeIf config.vim.keys.whichKey.enable ''
+          require('mini.icons').setup()
+          local mini_icons = require('mini.icons')
+          local get_icon = function(category, name)
+            local icon, hl = mini_icons.get(category, name)
+            return icon
+          end
+
+          require("which-key").add({
+            -- Main LSP group
+            { "<leader>l", group = "LSP", icon = get_icon("lsp", "interface") },
+            
+            -- LSP go-to operations
+            { "<leader>lg", group = "Go to", icon = get_icon("lsp", "reference") },
+            { "<leader>lgc", desc = "Go to declaration", icon = get_icon("lsp", "reference") },
+            { "<leader>lgd", desc = "Go to definition", icon = get_icon("lsp", "reference") },
+            { "<leader>lgt", desc = "Go to type definition", icon = get_icon("lsp", "type") },
+            
+            -- LSP diagnostics
+            { "<leader>ld", group = "Diagnostics", icon = get_icon("lsp", "error") },
+            { "<leader>ldn", desc = "Next diagnostic", icon = get_icon("lsp", "error") },
+            { "<leader>ldp", desc = "Previous diagnostic", icon = get_icon("lsp", "error") },
+            
+            -- LSP workspace operations
+            { "<leader>lw", group = "Workspace", icon = get_icon("default", "directory") },
+            { "<leader>lwa", desc = "Add workspace folder", icon = get_icon("lsp", "operator") },
+            { "<leader>lwr", desc = "Remove workspace folder", icon = get_icon("lsp", "operator") },
+            { "<leader>lwl", desc = "List workspace folders", icon = get_icon("lsp", "array") },
+            
+            -- LSP information and actions
+            { "<leader>lh", desc = "Hover information", icon = get_icon("lsp", "keyword") },
+            { "<leader>ls", desc = "Signature help", icon = get_icon("lsp", "function") },
+            { "<leader>lr", desc = "Rename symbol", icon = get_icon("lsp", "text") },
+          })
+        ''}
+      '';
+
     vim.luaConfigRC.lsp-setup = ''
 
    vim.g.formatsave = ${boolToString cfg.formatOnSave};

@@ -34,6 +34,7 @@ with lib; let
     "papercolor"
     "tokyonight"
     "zenbones"
+    "lush"
 
     # CODE
 
@@ -90,12 +91,13 @@ with lib; let
     "nvim-spider"
     "harpoon"
     "tide"
-    "twilight"
-    "zenmode"
 
     ## Visuals
+    "ccc-nvim"
     "fidget-nvim"
     "indent-blankline"
+    "twilight"
+    "zenmode"
   ];
   # You can either use the name of the plugin or a package.
   pluginsType = with types;

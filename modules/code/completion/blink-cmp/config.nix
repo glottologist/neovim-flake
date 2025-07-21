@@ -41,16 +41,7 @@ in {
   config = mkIf cfg.enable {
     vim.startPlugins =
       [
-        # Manual blink.cmp installation if not in nixpkgs
-        (pkgs.vimUtils.buildVimPlugin {
-          name = "blink.cmp";
-          src = pkgs.fetchFromGitHub {
-            owner = "Saghen";
-            repo = "blink.cmp";
-            rev = "v0.7.6"; # Use a stable version
-            sha256 = "0000000000000000000000000000000000000000000000000000"; # Replace with actual hash
-          };
-        })
+        "blink-cmp"
         "friendly-snippets"
       ]
       ++ optionals windsurfEnabled [
@@ -95,16 +86,16 @@ in {
     vim.luaConfigRC.completion = mkIf cfg.enable (dagPlacement ''
       -- Debug: Check blink.cmp status
       print("Setting up blink.cmp...")
-      
+
       -- Check if blink.cmp is available
       local blink_ok, blink = pcall(require, 'blink.cmp')
       if not blink_ok then
         print("ERROR: blink.cmp not found!")
         return
       end
-      
+
       print("blink.cmp module loaded successfully")
-      
+
       local blink_cmp_menu_map = function(entry, vim_item)
         -- name for each source
         vim_item.menu = ({
@@ -124,7 +115,7 @@ in {
           sources = {
             default = { 'buffer' },
           },
-          
+
           keymap = {
             preset = "enter",
             ['<Tab>'] = { "select_next", "show", "fallback" },
@@ -135,32 +126,32 @@ in {
         })
       })
       end)
-      
+
       if not setup_ok then
         print("ERROR: blink.cmp setup failed:", setup_err)
         return
       end
-      
+
       print("blink.cmp setup completed successfully")
 
       -- Setup LSP capabilities for blink.cmp
       local cap_ok, capabilities = pcall(function()
         return require('blink.cmp').get_lsp_capabilities()
       end)
-      
+
       if cap_ok then
         print("LSP capabilities configured successfully")
       else
         print("Warning: Could not get LSP capabilities:", capabilities)
       end
-      
+
       -- Debug: Check what got configured
       vim.defer_fn(function()
         print("=== BLINK.CMP DEBUG ===")
         local config_ok, config = pcall(function()
           return require('blink.cmp').get_config()
         end)
-        
+
         if config_ok and config then
           if config.sources then
             print("Sources configured:", vim.inspect(config.sources.default))

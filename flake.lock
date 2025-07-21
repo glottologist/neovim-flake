@@ -84,6 +84,22 @@
         "type": "github"
       }
     },
+    "ccc-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1746537659,
+        "narHash": "sha256-3TZ8VmvdgQ9n63m78C3r4OIUkVQHTHBvC24ixBdhTig=",
+        "owner": "uga-rosa",
+        "repo": "ccc.nvim",
+        "rev": "9d1a256e006decc574789dfc7d628ca11644d4c2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "uga-rosa",
+        "repo": "ccc.nvim",
+        "type": "github"
+      }
+    },
     "cheatsheet-nvim": {
       "flake": false,
       "locked": {
@@ -478,6 +494,22 @@
       "original": {
         "owner": "hoob3rt",
         "repo": "lualine.nvim",
+        "type": "github"
+      }
+    },
+    "lush": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1723785740,
+        "narHash": "sha256-meUCXjJ9kHOOpRd4TR2dc7Ai97zOQX35hYFEDZseiSk=",
+        "owner": "rktjmp",
+        "repo": "lush.nvim",
+        "rev": "45a79ec4acb5af783a6a29673a999ce37f00497e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rktjmp",
+        "repo": "lush.nvim",
         "type": "github"
       }
     },
@@ -928,6 +960,7 @@
         "bufdelete-nvim": "bufdelete-nvim",
         "bufferline-nvim": "bufferline-nvim",
         "catppuccin": "catppuccin",
+        "ccc-nvim": "ccc-nvim",
         "cheatsheet-nvim": "cheatsheet-nvim",
         "cmp-buffer": "cmp-buffer",
         "cmp-nvim-lsp": "cmp-nvim-lsp",
@@ -950,6 +983,7 @@
         "lsp-signature": "lsp-signature",
         "lspkind": "lspkind",
         "lualine": "lualine",
+        "lush": "lush",
         "mini-icons": "mini-icons",
         "mini-nvim": "mini-nvim",
         "modes-nvim": "modes-nvim",

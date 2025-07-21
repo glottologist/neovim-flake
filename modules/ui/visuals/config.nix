@@ -162,6 +162,22 @@ in {
       vim.nnoremap = {
         "<leader>ut" = "<cmd> Twilight<CR>";
       };
+      vim.luaConfigRC.twilight-keys = nvim.dag.entryAnywhere ''
+        ${nvim.lua.writeIf config.vim.keys.whichKey.enable ''
+                                           require('mini.icons').setup()
+                                             local mini_icons = require('mini.icons')
+                                             local get_icon = function(category, name)
+                                               local icon, hl = mini_icons.get(category, name)
+                                               return icon
+                                             end
+                                               require("which-key").add({-- Color group (you could create a dedicated color group)
+
+          { "<leader>ut", "<cmd>Twilight<CR>", desc = "Toggle Twilight", icon = get_icon("lsp", "interface") },
+
+                                               })
+
+        ''};
+      '';
       vim.luaConfigRC.twilight = nvim.dag.entryAnywhere ''
               require"twilight".setup{
                dimming = {
@@ -187,9 +203,58 @@ in {
       vim.nnoremap = {
         "<leader>uz" = "<cmd> ZenMode<CR>";
       };
+      vim.luaConfigRC.zenmode-keys = nvim.dag.entryAnywhere ''
+        ${nvim.lua.writeIf config.vim.keys.whichKey.enable ''
+                                 require('mini.icons').setup()
+                                   local mini_icons = require('mini.icons')
+                                   local get_icon = function(category, name)
+                                     local icon, hl = mini_icons.get(category, name)
+                                     return icon
+                                   end
+                                     require("which-key").add({
+          { "<leader>uz", "<cmd>ZenMode<CR>", desc = "Toggle Zen Mode", icon = get_icon("lsp", "interface") },
+
+                                     })
+
+        ''};
+      '';
       vim.luaConfigRC.zenmode = nvim.dag.entryAnywhere ''
         require"zen-mode".setup{
         }
+      '';
+    })
+    (mkIf cfg.ccc.enable {
+      vim.startPlugins = ["ccc-nvim"];
+      vim.nnoremap = {
+        "<leader>up" = "<cmd> CccPick<CR>";
+      };
+      vim.luaConfigRC.ccc-keys = nvim.dag.entryAnywhere ''
+        ${nvim.lua.writeIf config.vim.keys.whichKey.enable ''
+                                           require('mini.icons').setup()
+                                             local mini_icons = require('mini.icons')
+                                             local get_icon = function(category, name)
+                                               local icon, hl = mini_icons.get(category, name)
+                                               return icon
+                                             end
+                                               require("which-key").add({-- Color group (you could create a dedicated color group)
+
+          { "<leader>up", "<cmd>CccPick<CR>", desc = "Pick color", icon = get_icon("lsp", "color") },
+
+                                               })
+
+        ''};
+      '';
+
+      vim.luaConfigRC.ccc = nvim.dag.entryAnywhere ''
+             local ccc = require("ccc")
+        local mapping = ccc.mapping
+
+        ccc.setup({
+          highlighter = {
+            auto_enable = true,
+            lsp = true,
+          },
+        })
       '';
     })
   ]);
