@@ -152,6 +152,10 @@
       url = github:mrcjkb/telescope-manix;
       flake = false;
     };
+    nvim-spectre = {
+      url = "github:nvim-pack/nvim-spectre";
+      flake = false;
+    };
 
     # KEYS
     nvim-web-devicons = {
@@ -314,8 +318,6 @@
       flake = false;
     };
 
-   
-
     ## Languages
 
     ### Rust
@@ -342,6 +344,10 @@
     };
     gitsigns-nvim = {
       url = "github:lewis6991/gitsigns.nvim";
+      flake = false;
+    };
+    neogit = {
+      url = "github:NeogitOrg/neogit";
       flake = false;
     };
 

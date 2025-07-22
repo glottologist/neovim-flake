@@ -17,6 +17,7 @@ with lib; let
     "search"
     "telescope-media-files"
     "telescope-manix"
+    "nvim-spectre"
 
     # KEYS
     "cheatsheet-nvim"
@@ -100,6 +101,7 @@ with lib; let
     ## Git
     "git-worktrees"
     "gitsigns-nvim"
+    "neogit"
 
     # UI
     "modes-nvim"

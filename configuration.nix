@@ -29,8 +29,8 @@ inputs: let
         # EXPLORER
         explorer = {
           # These are mutually exclusive.  Only enable one or the other
-          neotree.enable = true;
-          nvimtree.enable = false;
+          neotree.enable = false;
+          nvimtree.enable = true;
         };
 
         # STATUS
@@ -61,6 +61,7 @@ inputs: let
             enable = true;
             media-files.enable = true;
             manix.enable = true;
+            spectre.enable = true;
           };
         };
 
@@ -165,6 +166,7 @@ inputs: let
             gitworktrees.enable = true;
             gitsigns.enable = true;
             gitsigns.codeActions = false;
+            neogit.enable = true;
           };
         };
       };
