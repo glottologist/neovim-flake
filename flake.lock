@@ -132,6 +132,22 @@
         "type": "github"
       }
     },
+    "cinnamon-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1722992123,
+        "narHash": "sha256-kccQ4iFMSQ8kvE7hYz90hBrsDLo7VohFj/6lEZZiAO8=",
+        "owner": "declancm",
+        "repo": "cinnamon.nvim",
+        "rev": "450cb3247765fed7871b41ef4ce5fa492d834215",
+        "type": "github"
+      },
+      "original": {
+        "owner": "declancm",
+        "repo": "cinnamon.nvim",
+        "type": "github"
+      }
+    },
     "cmp-buffer": {
       "flake": false,
       "locked": {
@@ -273,6 +289,22 @@
       "original": {
         "owner": "theHamsta",
         "repo": "nvim-dap-virtual-text",
+        "type": "github"
+      }
+    },
+    "diffview": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1718279802,
+        "narHash": "sha256-SX+ybIzL/w6uyCy4iZKnWnzTFwqB1oXSgyYVAdpdKi8=",
+        "owner": "sindrets",
+        "repo": "diffview.nvim",
+        "rev": "4516612fe98ff56ae0415a259ff6361a89419b0a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sindrets",
+        "repo": "diffview.nvim",
         "type": "github"
       }
     },
@@ -1075,6 +1107,7 @@
         "catppuccin": "catppuccin",
         "ccc-nvim": "ccc-nvim",
         "cheatsheet-nvim": "cheatsheet-nvim",
+        "cinnamon-nvim": "cinnamon-nvim",
         "cmp-buffer": "cmp-buffer",
         "cmp-nvim-lsp": "cmp-nvim-lsp",
         "cmp-path": "cmp-path",
@@ -1084,6 +1117,7 @@
         "dap": "dap",
         "dap-ui": "dap-ui",
         "dap-virtual-text": "dap-virtual-text",
+        "diffview": "diffview",
         "dracula": "dracula",
         "dressing-nvim": "dressing-nvim",
         "eyeliner": "eyeliner",

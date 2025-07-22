@@ -296,6 +296,12 @@
       flake = false;
     };
 
+    ## Diff
+    diffview = {
+      url = "github:sindrets/diffview.nvim";
+      flake = false;
+    };
+
     ## Languages
 
     ### Rust
@@ -365,22 +371,38 @@
     };
 
     ## Visuals
+
+    ### Colour picker
     ccc-nvim = {
       url = "github:uga-rosa/ccc.nvim";
       flake = false;
     };
+
+    ### Smooth scrolling
+    cinnamon-nvim = {
+      url = "github:declancm/cinnamon.nvim";
+      flake = false;
+    };
+
+    ### Unobtrusive status messages
     fidget-nvim = {
       url = "github:j-hui/fidget.nvim";
       flake = false;
     };
+
+    ### Indent markings
     indent-blankline = {
       url = "github:lukas-reineke/indent-blankline.nvim";
       flake = false;
     };
+
+    ### Dimmed focus
     twilight = {
       url = github:folke/twilight.nvim;
       flake = false;
     };
+
+    ### Focus mode
     zenmode = {
       url = github:folke/zen-mode.nvim;
       flake = false;

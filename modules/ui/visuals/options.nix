@@ -17,6 +17,14 @@ in {
         default = false;
       };
     };
+    cinnamon = {
+      enable = mkOption {
+        type = types.bool;
+        description = "Enable Cinnamon Smooth Scrolling";
+        default = false;
+      };
+    };
+
     fidget = {
       enable = mkOption {
         type = types.bool;

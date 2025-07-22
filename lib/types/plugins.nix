@@ -108,6 +108,7 @@ with lib; let
 
     ## Visuals
     "ccc-nvim"
+    "cinnamon-nvim"
     "fidget-nvim"
     "indent-blankline"
     "twilight"

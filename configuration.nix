@@ -90,6 +90,7 @@ inputs: let
           visuals = {
             enable = true;
             ccc.enable = true;
+            cinnamon.enable = true;
             fidget.enable = true;
             indentBlankline = {
               enable = true;

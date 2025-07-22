@@ -257,5 +257,30 @@ in {
         })
       '';
     })
+    (mkIf cfg.cinnamon.enable {
+      vim.startPlugins = ["cinnamon-nvim"];
+      vim.nnoremap = {
+      };
+      vim.luaConfigRC.cinnamon-keys = nvim.dag.entryAnywhere ''
+        ${nvim.lua.writeIf config.vim.keys.whichKey.enable ''
+          require('mini.icons').setup()
+            local mini_icons = require('mini.icons')
+            local get_icon = function(category, name)
+              local icon, hl = mini_icons.get(category, name)
+              return icon
+            end
+              require("which-key").add({-- Color group (you could create a dedicated color group)
+
+
+              })
+
+        ''};
+      '';
+
+      vim.luaConfigRC.cinnamon = nvim.dag.entryAnywhere ''
+        require("cinnamon").setup {
+        }
+      '';
+    })
   ]);
 }
