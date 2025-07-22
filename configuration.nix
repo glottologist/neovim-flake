@@ -116,6 +116,10 @@ inputs: let
           ai = {
             windsurf.enable = true;
           };
+          completion = {
+            nvimCmp.enable = true;
+            blinkCmp.enable = false;
+          };
           debug = {
             dap.enable = true;
           };
@@ -128,9 +132,8 @@ inputs: let
           format = {
             confrom.enable = true;
           };
-          completion = {
-            nvimCmp.enable = true;
-            blinkCmp.enable = false;
+          lint = {
+            nvim-lint.enable = true;
           };
           lsp = {
             enable = true;
