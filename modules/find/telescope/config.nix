@@ -7,14 +7,19 @@
 with lib;
 with builtins; let
   cfg = config.vim.find.telescope;
+  manixEnabled = config.vim.find.telescope.manix.enable;
 in {
   config = mkIf (cfg.enable) {
-    vim.startPlugins = [
-      "telescope"
-      "search"
-      "telescope-fzf-native"
-      "dressing-nvim"
-    ];
+    vim.startPlugins =
+      [
+        "telescope"
+        "search"
+        "telescope-fzf-native"
+        "dressing-nvim"
+      ]
+      ++ optionals manixEnabled [
+        "telescope-manix"
+      ];
 
     vim.nnoremap = {
       # Buffer and file navigation
@@ -256,6 +261,9 @@ in {
 
       -- Load fzf extension if available
       pcall(telescope.load_extension, "fzf")
+      ${nvim.lua.writeIf manixEnabled ''
+        pcall(telescope.load_extension, "manix")
+      ''};
 
       -- Setup search plugin
       local search_ok, search = pcall(require, "search")

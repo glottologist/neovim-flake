@@ -16,6 +16,7 @@ with lib; let
     "telescope-fzf-native"
     "search"
     "telescope-media-files"
+    "telescope-manix"
 
     # KEYS
     "cheatsheet-nvim"

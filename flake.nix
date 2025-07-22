@@ -144,9 +144,12 @@
       url = github:nvim-telescope/telescope-media-files.nvim;
       flake = false;
     };
-
     search = {
       url = github:FabianWirth/search.nvim;
+      flake = false;
+    };
+    telescope-manix = {
+      url = github:mrcjkb/telescope-manix;
       flake = false;
     };
 

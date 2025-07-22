@@ -60,6 +60,7 @@ inputs: let
           telescope = {
             enable = true;
             media-files.enable = true;
+            manix.enable = true;
           };
         };
 
