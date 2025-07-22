@@ -7,5 +7,7 @@
     ./lsp
     ./git
     ./ai
+    ./actions
+    ./debug
   ];
 }

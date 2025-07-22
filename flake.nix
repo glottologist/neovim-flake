@@ -173,9 +173,33 @@
 
     # CODE
 
+    ## ACTIONS
+    actions-preview = {
+      url = "github:aznhe21/actions-preview.nvim";
+      flake = false;
+    };
+
     ## AI
     windsurf-nvim = {
       url = "github:Exafunction/windsurf.vim";
+      flake = false;
+    };
+
+    ## DEBUG
+    dap = {
+      url = "github:mfussenegger/nvim-dap";
+      flake = false;
+    };
+    dap-ui = {
+      url = "github:rcarriga/nvim-dap-ui";
+      flake = false;
+    };
+    dap-virtual-text = {
+      url = "github:theHamsta/nvim-dap-virtual-text";
+      flake = false;
+    };
+    nvim-nio = {
+      url = "github:nvim-neotest/nvim-nio";
       flake = false;
     };
 

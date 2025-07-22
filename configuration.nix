@@ -29,8 +29,8 @@ inputs: let
         # EXPLORER
         explorer = {
           # These are mutually exclusive.  Only enable one or the other
-          neotree.enable = false;
-          nvimtree.enable = true;
+          neotree.enable = true;
+          nvimtree.enable = false;
         };
 
         # STATUS
@@ -108,8 +108,14 @@ inputs: let
 
         # CODE
         code = {
+          actions = {
+            actionsPreview.enable = true;
+          };
           ai = {
             windsurf.enable = true;
+          };
+          debug = {
+            dap.enable = true;
           };
           folds = {
             ufo.enable = true;

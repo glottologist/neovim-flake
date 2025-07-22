@@ -38,8 +38,17 @@ with lib; let
 
     # CODE
 
+    ## ACTIONS
+    "actions-preview"
+
     ## AI
     "windsurf-nvim"
+
+    ##
+    "dap"
+    "dap-ui"
+    "dap-virtual-text"
+    "nvim-nio"
 
     ## FOLDS
     "nvim-ufo"
