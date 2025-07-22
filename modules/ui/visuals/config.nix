@@ -261,25 +261,30 @@ in {
       vim.startPlugins = ["cinnamon-nvim"];
       vim.nnoremap = {
       };
-      vim.luaConfigRC.cinnamon-keys = nvim.dag.entryAnywhere ''
-        ${nvim.lua.writeIf config.vim.keys.whichKey.enable ''
-          require('mini.icons').setup()
-            local mini_icons = require('mini.icons')
-            local get_icon = function(category, name)
-              local icon, hl = mini_icons.get(category, name)
-              return icon
-            end
-              require("which-key").add({-- Color group (you could create a dedicated color group)
-
-
-              })
-
-        ''};
-      '';
 
       vim.luaConfigRC.cinnamon = nvim.dag.entryAnywhere ''
-        require("cinnamon").setup {
-        }
+        require('cinnamon').setup({
+          -- Your other cinnamon settings here
+          keymaps = {
+            -- Disable default keymaps
+            basic = false,
+            extra = false,
+          },
+        })
+
+        -- Set up custom keymaps
+        local cinnamon = require('cinnamon')
+
+        -- Shift+J for scroll down
+        vim.keymap.set('n', '<S-j>', function()
+          cinnamon.scroll('<C-d>')
+        end, { desc = 'Scroll down with cinnamon' })
+
+        -- Shift+K for scroll up
+        vim.keymap.set('n', '<S-k>', function()
+          cinnamon.scroll('<C-u>')
+        end, { desc = 'Scroll up with cinnamon' })
+
       '';
     })
   ]);
