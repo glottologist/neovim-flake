@@ -10,5 +10,7 @@
     ./actions
     ./debug
     ./diff
+    ./format
+    ./lint
   ];
 }

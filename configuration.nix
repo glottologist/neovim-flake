@@ -125,6 +125,9 @@ inputs: let
           folds = {
             ufo.enable = true;
           };
+          format = {
+            confrom.enable = true;
+          };
           completion = {
             nvimCmp.enable = true;
             blinkCmp.enable = false;

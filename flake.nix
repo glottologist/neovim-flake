@@ -302,6 +302,20 @@
       flake = false;
     };
 
+    ## Format
+    conform = {
+      url = "github:stevearc/conform.nvim";
+      flake = false;
+    };
+
+    ## Lint
+    nvim-lint = {
+      url = "github:mfussenegger/nvim-lint";
+      flake = false;
+    };
+
+   
+
     ## Languages
 
     ### Rust

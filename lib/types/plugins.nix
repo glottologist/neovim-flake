@@ -58,6 +58,12 @@ with lib; let
     "nvim-ufo"
     "promise-async"
 
+    ## FORMAT
+    "conform"
+
+    ## LINT
+    "nvim-lint"
+
     ## LSP
     "nvim-lspconfig"
     "nvim-lightbulb"
