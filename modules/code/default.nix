@@ -9,5 +9,6 @@
     ./ai
     ./actions
     ./debug
+    ./diff
   ];
 }

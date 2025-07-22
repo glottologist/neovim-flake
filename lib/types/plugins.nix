@@ -45,11 +45,14 @@ with lib; let
     ## AI
     "windsurf-nvim"
 
-    ##
+    ## DEBUG
     "dap"
     "dap-ui"
     "dap-virtual-text"
     "nvim-nio"
+
+    ## DIFF
+    "diffview"
 
     ## FOLDS
     "nvim-ufo"

@@ -119,6 +119,9 @@ inputs: let
           debug = {
             dap.enable = true;
           };
+          diff = {
+            diffview.enable = true;
+          };
           folds = {
             ufo.enable = true;
           };
