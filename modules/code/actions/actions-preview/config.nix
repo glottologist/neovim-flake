@@ -24,7 +24,7 @@ in {
                     return icon
                   end
                     require("which-key").add({
-        { "<silent><leader>la", "<cmd>lua require('actions-preview').code_actions()<CR>", desc = "Show actions", icon = get_icon("lsp","event")}
+        { "<leader>la", "<cmd>lua require('actions-preview').code_actions()<CR>", desc = "Show actions", icon = get_icon("lsp","event")}
 
                     })
       ''}
