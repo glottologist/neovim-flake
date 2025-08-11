@@ -75,6 +75,10 @@
       url = "github:nvim-tree/nvim-tree.lua";
       flake = false;
     };
+    oil = {
+      url = "github:stevearc/oil.nvim";
+      flake = false;
+    };
 
     # TABLINE
     bufferline-nvim = {

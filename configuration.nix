@@ -28,9 +28,12 @@ inputs: let
 
         # EXPLORER
         explorer = {
-          # These are mutually exclusive.  Only enable one or the other
-          neotree.enable = false;
-          nvimtree.enable = true;
+          # NvimTree and NeoTree are mutually exclusive.  Only enable one or the other
+          neotree.enable = true;
+          nvimtree.enable = false;
+
+          # Buffer based file exploration
+          oil.enable = true;
         };
 
         # STATUS

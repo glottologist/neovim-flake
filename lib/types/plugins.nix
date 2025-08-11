@@ -9,6 +9,7 @@ with lib; let
     "neotree"
     "nvimtree"
     "nui-nvim"
+    "oil"
 
     # FIND
     "dressing-nvim"
