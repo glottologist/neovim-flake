@@ -23,6 +23,9 @@ in {
       "<left>" = "<nop>";
       "<right>" = "<nop>";
     };
+    vim.inoremap = {
+       "ii" = "<ESC>";
+    };
 
     vim.nnoremap =
       mkIf cfg.mapLeaderSpace {
