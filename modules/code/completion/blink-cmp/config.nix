@@ -15,7 +15,7 @@ with builtins; let
   actualSources =
     filterAttrs (
       n: v:
-        !(n == "codeium" && !windsurfEnabled)
+        !(n == "codeium" && !windsurfEnabled) && v != null
     )
     cfg.sources;
 
@@ -55,11 +55,6 @@ in {
         "path" = "[Path]";
         "snippets" = "[Snippets]";
         "buffer" = "[Buffer]";
-        "treesitter" = "[Treesitter]";
-        "blink-cmp" = null;
-      }
-      // optionalAttrs windsurfEnabled {
-        "codeium" = "[Codeium]";
       };
 
     # Setup Windsurf/Codeium BEFORE blink.cmp
@@ -111,20 +106,53 @@ in {
       -- Setup blink.cmp
       local setup_ok, setup_err = pcall(function()
         require('blink.cmp').setup({
-          -- Minimal config to test
           sources = {
-            default = { 'buffer' },
+            default = { 'lsp', 'path', 'snippets', 'buffer' },
+            ${optionalString (length cfg.compat_sources > 0 || windsurfEnabled) ''
+            compat = { ${concatMapStringsSep ", " (s: "'${s}'") (cfg.compat_sources ++ optional windsurfEnabled "codeium")} },
+            ''}
           },
 
           keymap = {
-            preset = "enter",
+            preset = "${cfg.keymap.preset}",
             ['<Tab>'] = { "select_next", "show", "fallback" },
             ['<S-Tab>'] = { "select_prev", "fallback" },
             ['<CR>'] = { "accept", "fallback" },
             ['<C-Space>'] = { "show" },
           },
+
+          completion = {
+            documentation = {
+              auto_show = ${boolToString cfg.completion.documentation.auto_show},
+              auto_show_delay_ms = ${toString cfg.completion.documentation.auto_show_delay_ms},
+            },
+            ghost_text = {
+              enabled = ${boolToString cfg.completion.ghost_text.enabled},
+            },
+          },
+
+          appearance = {
+            nerd_font_variant = "${cfg.appearance.nerd_font_variant}",
+            use_nvim_cmp_as_default = ${boolToString cfg.appearance.use_nvim_cmp_as_default},
+            ${optionalString lspkindEnabled "kind_icons = kind_icons,"}
+          },
+
+          ${optionalString cfg.cmdline.enabled ''
+          cmdline = {
+            enabled = true,
+          },
+          ''}
+
+          snippets = {
+            expand = function(snippet, _)
+              ${cfg.snippets.expand}
+            end,
+          },
+
+          signature = {
+            enabled = true,
+          },
         })
-      })
       end)
 
       if not setup_ok then

@@ -121,8 +121,8 @@ inputs: let
             windsurf.enable = true;
           };
           completion = {
-            nvimCmp.enable = true;
-            blinkCmp.enable = false;
+            nvimCmp.enable = false;
+            blinkCmp.enable = true;
           };
           debug = {
             dap.enable = true;
