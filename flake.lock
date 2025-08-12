@@ -23,11 +23,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1754736680,
-        "narHash": "sha256-L2VoT7qSVUYbUTSZECICBguVWhArXn1bvtYQodvCQIs=",
+        "lastModified": 1754987079,
+        "narHash": "sha256-nqZkCxCezRZG7qPV+PGbAWvmqoJsU0+dgiBkb0NE/0Y=",
         "owner": "Saghen",
         "repo": "blink.cmp",
-        "rev": "10f2ebe48849726608f79e21bc9eb89c567a22f3",
+        "rev": "dc6882469bf3b98e078888f86bb68ad90d395c7e",
         "type": "github"
       },
       "original": {
@@ -1360,11 +1360,11 @@
     "telescope-manix": {
       "flake": false,
       "locked": {
-        "lastModified": 1754785604,
-        "narHash": "sha256-1lisk74DwBjhdSI9+IGWmIBbiHS4wscecTbbsj0iV/8=",
+        "lastModified": 1754983978,
+        "narHash": "sha256-LvWHBXol1ADAP4uCrjNEyrvj1ie7nOlOrMwqCoH0vVU=",
         "owner": "mrcjkb",
         "repo": "telescope-manix",
-        "rev": "faca4f79674423ea852ca0bc0e6318840f95c6c6",
+        "rev": "869944aa579e057ec37ac46bce43a0360d53f74b",
         "type": "github"
       },
       "original": {
