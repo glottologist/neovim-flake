@@ -49,13 +49,12 @@ in {
         "plenary-nvim"
       ];
 
-    vim.code.completion.sources =
-      {
-        "lsp" = "[LSP]";
-        "path" = "[Path]";
-        "snippets" = "[Snippets]";
-        "buffer" = "[Buffer]";
-      };
+    vim.code.completion.sources = {
+      "lsp" = "[LSP]";
+      "path" = "[Path]";
+      "snippets" = "[Snippets]";
+      "buffer" = "[Buffer]";
+    };
 
     # Setup Windsurf/Codeium BEFORE blink.cmp
     vim.luaConfigRC.windsurf-setup = mkIf windsurfEnabled (lib.nvim.dag.entryBefore ["completion"] ''
@@ -79,119 +78,122 @@ in {
     '');
 
     vim.luaConfigRC.completion = mkIf cfg.enable (dagPlacement ''
-      -- Debug: Check blink.cmp status
-      print("Setting up blink.cmp...")
+        -- Debug: Check blink.cmp status
+        print("Setting up blink.cmp...")
 
-      -- Check if blink.cmp is available
-      local blink_ok, blink = pcall(require, 'blink.cmp')
-      if not blink_ok then
-        print("ERROR: blink.cmp not found!")
-        return
-      end
+        -- Check if blink.cmp is available
+        local blink_ok, blink = pcall(require, 'blink.cmp')
+        if not blink_ok then
+          print("ERROR: blink.cmp not found!")
+          return
+        end
 
-      print("blink.cmp module loaded successfully")
+        print("blink.cmp module loaded successfully")
 
-      local blink_cmp_menu_map = function(entry, vim_item)
-        -- name for each source
-        vim_item.menu = ({
-          ${builtMaps}
-          })[entry.source.name]
-        return vim_item
-      end
+        local blink_cmp_menu_map = function(entry, vim_item)
+          -- name for each source
+          vim_item.menu = ({
+            ${builtMaps}
+            })[entry.source.name]
+          return vim_item
+        end
 
-      ${optionalString lspkindEnabled ''
+        ${optionalString lspkindEnabled ''
         local kind_icons = lspkind.presets.default
       ''}
 
-      -- Setup blink.cmp
-      local setup_ok, setup_err = pcall(function()
-        require('blink.cmp').setup({
-          sources = {
-            default = { 'lsp', 'path', 'snippets', 'buffer' },
-            ${optionalString (length cfg.compat_sources > 0 || windsurfEnabled) ''
-            compat = { ${concatMapStringsSep ", " (s: "'${s}'") (cfg.compat_sources ++ optional windsurfEnabled "codeium")} },
-            ''}
-          },
-
-          keymap = {
-            preset = "${cfg.keymap.preset}",
-            ['<Tab>'] = { "select_next", "show", "fallback" },
-            ['<S-Tab>'] = { "select_prev", "fallback" },
-            ['<CR>'] = { "accept", "fallback" },
-            ['<C-Space>'] = { "show" },
-          },
-
-          completion = {
-            documentation = {
-              auto_show = ${boolToString cfg.completion.documentation.auto_show},
-              auto_show_delay_ms = ${toString cfg.completion.documentation.auto_show_delay_ms},
+        -- Setup blink.cmp
+        local setup_ok, setup_err = pcall(function()
+          require('blink.cmp').setup({
+            sources = {
+              default = { 'lsp', 'path', 'snippets', 'buffer' },
+              ${optionalString (length cfg.compat_sources > 0 || windsurfEnabled) ''
+        compat = { ${concatMapStringsSep ", " (s: "'${s}'") (cfg.compat_sources ++ optional windsurfEnabled "codeium")} },
+      ''}
             },
-            ghost_text = {
-              enabled = ${boolToString cfg.completion.ghost_text.enabled},
+
+            keymap = {
+              preset = "${cfg.keymap.preset}",
+              ['<Tab>'] = { "select_next", "show", "fallback" },
+              ['<S-Tab>'] = { "select_prev", "fallback" },
+              ['<CR>'] = { "accept", "fallback" },
+              ['<C-Space>'] = { "show" },
             },
-          },
 
-          appearance = {
-            nerd_font_variant = "${cfg.appearance.nerd_font_variant}",
-            use_nvim_cmp_as_default = ${boolToString cfg.appearance.use_nvim_cmp_as_default},
-            ${optionalString lspkindEnabled "kind_icons = kind_icons,"}
-          },
+            completion = {
+              accept = {
+        expand_snippet = vim.snippet.expand,
+      },
+              documentation = {
+                auto_show = ${boolToString cfg.completion.documentation.auto_show},
+                auto_show_delay_ms = ${toString cfg.completion.documentation.auto_show_delay_ms},
+              },
+              ghost_text = {
+                enabled = ${boolToString cfg.completion.ghost_text.enabled},
+              },
+            },
 
-          ${optionalString cfg.cmdline.enabled ''
-          cmdline = {
-            enabled = true,
-          },
-          ''}
+            appearance = {
+              nerd_font_variant = "${cfg.appearance.nerd_font_variant}",
+              use_nvim_cmp_as_default = ${boolToString cfg.appearance.use_nvim_cmp_as_default},
+              ${optionalString lspkindEnabled "kind_icons = kind_icons,"}
+            },
 
-          snippets = {
-            expand = function(snippet, _)
-              ${cfg.snippets.expand}
-            end,
-          },
+            ${optionalString cfg.cmdline.enabled ''
+        cmdline = {
+          enabled = true,
+        },
+      ''}
 
-          signature = {
-            enabled = true,
-          },
-        })
-      end)
+            snippets = {
+              expand = function(snippet, _)
+                ${cfg.snippets.expand}
+              end,
+            },
 
-      if not setup_ok then
-        print("ERROR: blink.cmp setup failed:", setup_err)
-        return
-      end
-
-      print("blink.cmp setup completed successfully")
-
-      -- Setup LSP capabilities for blink.cmp
-      local cap_ok, capabilities = pcall(function()
-        return require('blink.cmp').get_lsp_capabilities()
-      end)
-
-      if cap_ok then
-        print("LSP capabilities configured successfully")
-      else
-        print("Warning: Could not get LSP capabilities:", capabilities)
-      end
-
-      -- Debug: Check what got configured
-      vim.defer_fn(function()
-        print("=== BLINK.CMP DEBUG ===")
-        local config_ok, config = pcall(function()
-          return require('blink.cmp').get_config()
+            signature = {
+              enabled = true,
+            },
+          })
         end)
 
-        if config_ok and config then
-          if config.sources then
-            print("Sources configured:", vim.inspect(config.sources.default))
-            print("Providers available:", vim.inspect(vim.tbl_keys(config.sources.providers or {})))
-          else
-            print("Config found but no sources:", vim.inspect(config))
-          end
-        else
-          print("Failed to get config:", config)
+        if not setup_ok then
+          print("ERROR: blink.cmp setup failed:", setup_err)
+          return
         end
-        print("======================")
-      end, 1000)
+
+        print("blink.cmp setup completed successfully")
+
+        -- Setup LSP capabilities for blink.cmp
+        local cap_ok, capabilities = pcall(function()
+          return require('blink.cmp').get_lsp_capabilities()
+        end)
+
+        if cap_ok then
+          print("LSP capabilities configured successfully")
+        else
+          print("Warning: Could not get LSP capabilities:", capabilities)
+        end
+
+        -- Debug: Check what got configured
+        vim.defer_fn(function()
+          print("=== BLINK.CMP DEBUG ===")
+          local config_ok, config = pcall(function()
+            return require('blink.cmp').get_config()
+          end)
+
+          if config_ok and config then
+            if config.sources then
+              print("Sources configured:", vim.inspect(config.sources.default))
+              print("Providers available:", vim.inspect(vim.tbl_keys(config.sources.providers or {})))
+            else
+              print("Config found but no sources:", vim.inspect(config))
+            end
+          else
+            print("Failed to get config:", config)
+          end
+          print("======================")
+        end, 1000)
 
     '');
 

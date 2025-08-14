@@ -86,6 +86,11 @@ in {
           vim.keymap.set("n", "<leader>rg", function() rt.crate_graph.view_crate_graph("x11", nil) end, opts)
         end
         local rustopts = {
+        completion = {
+        postfix = {
+          enable = true,
+        },
+        },
           tools = {
             autoSetHints = true,
             hover_with_actions = true,
