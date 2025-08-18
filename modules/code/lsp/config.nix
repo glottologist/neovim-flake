@@ -32,6 +32,7 @@ in {
           { "<leader>lgr", desc = "Go to references", icon = get_icon("lsp", "reference") },
           { "<leader>lgc", desc = "Go to declaration", icon = get_icon("lsp", "reference") },
           { "<leader>lgd", desc = "Go to definition", icon = get_icon("lsp", "reference") },
+          { "<leader>lgi", desc = "Go to implementation", icon = get_icon("lsp", "reference") },
           { "<leader>lgt", desc = "Go to type definition", icon = get_icon("lsp", "type") },
 
           -- LSP diagnostics
@@ -63,6 +64,7 @@ in {
               vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lgr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
               vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lgc', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
               vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lgd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+              vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lgi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
               vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lgt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
               vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ldn', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
               vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ldp', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
