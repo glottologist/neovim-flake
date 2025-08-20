@@ -37,17 +37,17 @@ in {
 
     vim.startLuaConfigRC.windsuf-setup = ''
 
-        -- Setup Windsurf/Codeium first
-        require("codeium").setup({
-          -- Enable the completion source for blink.cmp
-          enable_cmp_source = true,
+      -- Setup Windsurf/Codeium first
+      require("codeium").setup({
+        -- Enable the completion source for blink.cmp
+        enable_cmp_source = true,
 
-          -- Disable virtual text to avoid conflicts with blink.cmp
-          virtual_text = {
-            enabled = false,
-          },
+        -- Disable virtual text to avoid conflicts with blink.cmp
+        virtual_text = {
+          enabled = false,
+        },
 
-        })
+      })
 
     '';
   };
