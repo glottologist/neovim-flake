@@ -23,10 +23,6 @@ in {
                    return icon
                  end
                    require("which-key").add({
-                   { "<leader>L", desc = "Accept Line (insert mode)", mode = "i", icon = get_icon("lsp", "snippet") },
-                 { "<leader>W", desc = "Accept Word (insert mode)", mode = "i", icon = get_icon("lsp", "snippet") },
-                 { "<leader>J", desc = "Next Suggestion (insert mode)", mode = "i", icon = get_icon("lsp", "method") },
-                 { "<leader>K", desc = "Previous Suggestion (insert mode)", mode = "i", icon = get_icon("lsp", "method") },
         -- AI/Codeium group
                  { "<leader>a", group = "AI", icon = get_icon("lsp", "class") },
 
@@ -40,21 +36,18 @@ in {
     '';
 
     vim.startLuaConfigRC.windsuf-setup = ''
-    vim.keymap.set('i', '<C-Space>L', function() return vim.fn['codeium#AcceptLine']() end, { expr = true, silent = true })
-    vim.keymap.set('i', '<C-Space>W', function() return vim.fn['codeium#AcceptWord']() end, { expr = true, silent = true })
-    vim.keymap.set('i', '<C-Space>j', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
-    vim.keymap.set('i', '<C-Space>k', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
-      -- Setup Windsurf/Codeium first
-      require("codeium").setup({
-        -- Enable the completion source for blink.cmp
-        enable_cmp_source = true,
 
-        -- Disable virtual text to avoid conflicts with blink.cmp
-        virtual_text = {
-          enabled = false,
-        },
+        -- Setup Windsurf/Codeium first
+        require("codeium").setup({
+          -- Enable the completion source for blink.cmp
+          enable_cmp_source = true,
 
-      })
+          -- Disable virtual text to avoid conflicts with blink.cmp
+          virtual_text = {
+            enabled = false,
+          },
+
+        })
 
     '';
   };
