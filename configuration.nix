@@ -131,7 +131,7 @@ inputs: let
             diffview.enable = true;
           };
           folds = {
-            ufo.enable = true;
+            ufo.enable = false;
           };
           format = {
             confrom.enable = true;
