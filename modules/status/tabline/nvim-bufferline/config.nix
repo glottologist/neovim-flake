@@ -53,6 +53,9 @@ in {
             { "<leader>bxr", "<cmd>BufferLineCloseRight<CR>", desc = "Close right", icon = get_icon("lsp", "keyword") },
             { "<leader>bxo", "<cmd>BufferLineCloseOthers<CR>", desc = "Close others", icon = get_icon("lsp", "keyword") },
 
+            -- Quick close others
+            { "<leader>X", "<cmd>BufferLineCloseOthers<CR>", desc = "Close all other buffers", icon = get_icon("lsp", "keyword") },
+
             -- Buffer sorting
             { "<leader>bs", group = "Sort", icon = get_icon("lsp", "method") },
             { "<leader>bse", "<cmd>BufferLineSortByExtension<CR>", desc = "Sort by extension", icon = get_icon("lsp", "method") },
@@ -86,6 +89,7 @@ in {
         "<silent><leader>bxl" = ":BufferLineCloseLeft<CR>";
         "<silent><leader>bxr" = ":BufferLineCloseRight<CR>";
         "<silent><leader>bxo" = ":BufferLineCloseOthers<CR>";
+        "<silent><leader>X" = ":BufferLineCloseOthers<CR>";
         "<silent><leader>bp" = ":BufferLinePick<CR>";
         "<silent><leader>bcn" = ":BufferLineCycleNext<CR>";
         "<silent><leader>bcp" = ":BufferLineCyclePrev<CR>";
