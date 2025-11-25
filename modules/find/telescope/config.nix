@@ -213,12 +213,13 @@ in {
           layout_config = {
             horizontal = {
               preview_width = 0.55,
-              preview_cutoff = 120,
+              preview_cutoff = 0,
+              prompt_position = "bottom",
             },
             width = 0.87,
             height = 0.80,
+            preview_cutoff = 0,
           },
-          previewer = true,
           vimgrep_arguments = {
             "${pkgs.ripgrep}/bin/rg",
             "--color=never",
@@ -254,10 +255,12 @@ in {
               ["<C-f>"] = actions.preview_scrolling_down,
               ["<C-b>"] = actions.preview_scrolling_up,
               ["<c-s>"] = flash,
+              ["<C-p>"] = require("telescope.actions.layout").toggle_preview,
             },
             n = {
               ["q"] = actions.close,
               ["s"] = flash,
+              ["<C-p>"] = require("telescope.actions.layout").toggle_preview,
             },
           },
         },
@@ -269,13 +272,21 @@ in {
           live_grep = {
             layout_strategy = "horizontal",
             layout_config = {
-              preview_width = 0.6,
+              horizontal = {
+                preview_width = 0.6,
+                preview_cutoff = 0,
+              },
+              preview_cutoff = 0,
             },
           },
           grep_string = {
             layout_strategy = "horizontal",
             layout_config = {
-              preview_width = 0.6,
+              horizontal = {
+                preview_width = 0.6,
+                preview_cutoff = 0,
+              },
+              preview_cutoff = 0,
             },
           },
         },

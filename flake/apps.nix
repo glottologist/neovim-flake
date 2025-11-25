@@ -1,6 +1,5 @@
 {lib, ...}: {
   perSystem = {
-    system,
     config,
     ...
   }: {

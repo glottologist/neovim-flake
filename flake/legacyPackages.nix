@@ -1,11 +1,11 @@
 {inputs, ...}: {
   perSystem = {
-    system,
+    pkgs,
     inputs',
     ...
   }: {
     legacyPackages = import inputs.nixpkgs {
-      inherit system;
+      system = pkgs.stdenv.hostPlatform.system;
       overlays = [
          inputs.self.overlays.default
       ];

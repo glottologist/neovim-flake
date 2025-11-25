@@ -697,11 +697,11 @@
     "neogit": {
       "flake": false,
       "locked": {
-        "lastModified": 1764072258,
-        "narHash": "sha256-vkUiFMmubEUmTp3QwtCRp1Xj9okdpIJbp/SmIUYIkGI=",
+        "lastModified": 1764082223,
+        "narHash": "sha256-3NvmU+mPliPO9OGwUFvgsB6/Bza086USJ4grgkKdh8M=",
         "owner": "NeogitOrg",
         "repo": "neogit",
-        "rev": "d7d98eade13fefc2821ff8fc08f673646984310b",
+        "rev": "96c903998c35685604a0c6bc662d5a4c277fbef5",
         "type": "github"
       },
       "original": {
