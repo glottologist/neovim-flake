@@ -209,6 +209,16 @@ in {
         defaults = {
           prompt_prefix = " ",
           selection_caret = " ",
+          layout_strategy = "horizontal",
+          layout_config = {
+            horizontal = {
+              preview_width = 0.55,
+              preview_cutoff = 120,
+            },
+            width = 0.87,
+            height = 0.80,
+          },
+          previewer = true,
           vimgrep_arguments = {
             "${pkgs.ripgrep}/bin/rg",
             "--color=never",
@@ -255,6 +265,18 @@ in {
           find_files = {
             find_command = find_command,
             hidden = true,
+          },
+          live_grep = {
+            layout_strategy = "horizontal",
+            layout_config = {
+              preview_width = 0.6,
+            },
+          },
+          grep_string = {
+            layout_strategy = "horizontal",
+            layout_config = {
+              preview_width = 0.6,
+            },
           },
         },
       })
