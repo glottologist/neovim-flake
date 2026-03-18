@@ -161,6 +161,7 @@ inputs: let
             enableExtraDiagnostics = false;
 
             rust.enable = true;
+            rust.crates.enable = true;
             nix.enable = true;
             markdown.enable = true;
           };
