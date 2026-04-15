@@ -324,6 +324,12 @@
 
     ## Languages
 
+    ### Markdown
+    render-markdown = {
+      url = "github:MeanderingProgrammer/render-markdown.nvim";
+      flake = false;
+    };
+
     ### Rust
     rust-tools = {
       url = "github:simrat39/rust-tools.nvim";

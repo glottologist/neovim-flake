@@ -91,6 +91,9 @@ with lib; let
     "vim-vsnip"
 
     ## Languages
+    ### Markdown
+    "render-markdown"
+
     ### Rust
     "rust-tools"
     "crates-nvim"

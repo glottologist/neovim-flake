@@ -164,6 +164,7 @@ inputs: let
             rust.crates.enable = true;
             nix.enable = true;
             markdown.enable = true;
+            markdown.render.enable = true;
           };
           git = {
             enable = true;

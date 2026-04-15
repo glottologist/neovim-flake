@@ -20,5 +20,9 @@ in {
       mdPackage = nvim.types.mkGrammarOption pkgs "markdown";
       mdInlinePackage = nvim.types.mkGrammarOption pkgs "markdown-inline";
     };
+
+    render = {
+      enable = mkEnableOption "In-buffer rendered Markdown via render-markdown.nvim";
+    };
   };
 }
