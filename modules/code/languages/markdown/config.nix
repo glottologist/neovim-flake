@@ -32,7 +32,7 @@ in {
 
         ${nvim.lua.writeIf config.vim.keys.whichKey.enable ''
           require("which-key").add({
-            { "<leader>m",  group = "markdown" },
+            { "<leader>m",  group = "Markdown" },
             { "<leader>mp", "<cmd>RenderMarkdown toggle<CR>",  desc = "Toggle render" },
             { "<leader>me", "<cmd>RenderMarkdown enable<CR>",  desc = "Enable render" },
             { "<leader>md", "<cmd>RenderMarkdown disable<CR>", desc = "Disable render" },
