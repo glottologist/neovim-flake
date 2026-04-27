@@ -48,7 +48,12 @@ inputs: {
           if (plug == "nvim-treesitter")
           then (buildTreesitterPlug vimOptions.code.treesitter.grammars)
           else if (plug == "blink-cmp")
-          then inputs.blink-cmp.packages.${pkgs.system}.default
+          then
+            inputs.blink-cmp.packages.${pkgs.system}.default.overrideAttrs (_: {
+              doCheck = false;
+              doInstallCheck = false;
+              nvimRequireCheck = "";
+            })
           else (buildPlug plug)
         )
       else plug
