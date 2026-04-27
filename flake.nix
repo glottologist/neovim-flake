@@ -263,7 +263,9 @@
 
     ## COMPLETION
     blink-cmp = {
-      url = "github:Saghen/blink.cmp";
+      # Pinned to last v1 tag. master is now blink.cmp v2 which requires
+      # the separate saghen/blink.lib plugin and nvim 0.12+ (we ship 0.11.7).
+      url = "github:Saghen/blink.cmp/v1.10.1";
     };
     blink-compat = {
       url = "github:Saghen/blink.compat";
