@@ -698,11 +698,11 @@
     "neogit": {
       "flake": false,
       "locked": {
-        "lastModified": 1777884103,
-        "narHash": "sha256-N53gfjcJUUONXJzBcm0k3bl+hmkA081crvqnHXT3mo4=",
+        "lastModified": 1778063048,
+        "narHash": "sha256-CoS3zaEY/v2EJjwgo7xLt415CRI4NVirj2rDCVYtgZI=",
         "owner": "NeogitOrg",
         "repo": "neogit",
-        "rev": "f8bcc625fe1b9bd55f7853820fddac9b0996f697",
+        "rev": "e74dfb42c04b493031f323aec8fa5f28b0427b9e",
         "type": "github"
       },
       "original": {
@@ -795,11 +795,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1777271619,
-        "narHash": "sha256-gmurzpuuS5N90jEbbW7+T/cyC+SadLscpx3TPYTxfug=",
+        "lastModified": 1778062110,
+        "narHash": "sha256-GMszsFAIk6PkxMCeLVb09yvKt1ssP2pu42mGUFSGAvs=",
         "owner": "glottologist",
         "repo": "nixpkgs",
-        "rev": "8b598dd23b56ebd1db9707c9cdd7ff3797abad19",
+        "rev": "bafb2e8dcc6f2b77a011a13162b478b1074fc575",
         "type": "github"
       },
       "original": {
@@ -1020,11 +1020,11 @@
     "nvim-treesitter-context": {
       "flake": false,
       "locked": {
-        "lastModified": 1775123354,
-        "narHash": "sha256-K4o+iJY8+D0PRvRvXuBqX2q3fwxizAPp/FFpm0O0I9E=",
+        "lastModified": 1778059514,
+        "narHash": "sha256-2FkJvQMN0ktaNiyVLjcUUBvQNW9VHY6X4FscI1U3QhY=",
         "owner": "nvim-treesitter",
         "repo": "nvim-treesitter-context",
-        "rev": "b0c45cefe2c8f7b55fc46f34e563bc428ef99636",
+        "rev": "b311b30818951d01f7b4bf650521b868b3fece16",
         "type": "github"
       },
       "original": {
