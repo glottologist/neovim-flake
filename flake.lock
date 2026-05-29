@@ -795,11 +795,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1779113322,
-        "narHash": "sha256-4a9puq3lZMCmZUmWfZ3/lBg6mt+1svwYaBMXURwi/uc=",
+        "lastModified": 1780036973,
+        "narHash": "sha256-CMTA72zlWV4RYfAr2nzd8r6AkNgK+Kv9TZPOyu1Z8vg=",
         "owner": "glottologist",
         "repo": "nixpkgs",
-        "rev": "608782a922a07e12df2c7dbb1b677cfaec17b271",
+        "rev": "c171c7e29b1a67a7bd03b21f3c155788b0e15f22",
         "type": "github"
       },
       "original": {
