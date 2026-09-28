@@ -50,7 +50,7 @@
 
   # Flake inputs
   inputs = {
-    nixpkgs.url = "github:glottologist/nixpkgs/release-25.11";
+    nixpkgs.url = "github:glottologist/nixpkgs/release-26.05";
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-utils.url = "github:numtide/flake-utils";
 
