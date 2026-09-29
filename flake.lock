@@ -1265,7 +1265,7 @@
         "promise-async": "promise-async",
         "render-markdown": "render-markdown",
         "rnix-lsp": "rnix-lsp",
-        "rust-tools": "rust-tools",
+        "rustaceanvim": "rustaceanvim",
         "search": "search",
         "telescope": "telescope",
         "telescope-fzf-native": "telescope-fzf-native",
@@ -1299,19 +1299,19 @@
         "type": "github"
       }
     },
-    "rust-tools": {
+    "rustaceanvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1704259376,
-        "narHash": "sha256-kFane5ze7VDiOzF7jdmXkr50XQsNvdb+a9HQtybEVE0=",
-        "owner": "simrat39",
-        "repo": "rust-tools.nvim",
-        "rev": "676187908a1ce35ffcd727c654ed68d851299d3e",
+        "lastModified": 1789432932,
+        "narHash": "sha256-Fg20mGTMBhbausVuF2NtZJVia6w7Bj4ROuc38TBlId0=",
+        "owner": "mrcjkb",
+        "repo": "rustaceanvim",
+        "rev": "a968f5133b8b24f481de12f08cd79420d1ace559",
         "type": "github"
       },
       "original": {
-        "owner": "simrat39",
-        "repo": "rust-tools.nvim",
+        "owner": "mrcjkb",
+        "repo": "rustaceanvim",
         "type": "github"
       }
     },

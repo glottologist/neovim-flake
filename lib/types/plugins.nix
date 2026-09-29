@@ -95,7 +95,7 @@ with lib; let
     "render-markdown"
 
     ### Rust
-    "rust-tools"
+    "rustaceanvim"
     "crates-nvim"
 
     ### Nix

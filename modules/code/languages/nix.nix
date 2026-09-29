@@ -17,7 +17,7 @@ with builtins; let
       package = pkgs.rnix-lsp;
       internalFormatter = cfg.format.type == "nixpkgs-fmt";
       lspConfig = ''
-        lspconfig.rnix.setup{
+        vim.lsp.config('rnix', {
           capabilities = capabilities,
           ${
             if (cfg.format.enable && cfg.format.type == "nixpkgs-fmt")
@@ -25,7 +25,8 @@ with builtins; let
             else noFormat
           },
           cmd = {"${cfg.lsp.package}/bin/rnix-lsp"},
-        }
+        })
+        vim.lsp.enable('rnix')
       '';
     };
 
@@ -33,7 +34,7 @@ with builtins; let
       package = pkgs.nil;
       internalFormatter = true;
       lspConfig = ''
-        lspconfig.nil_ls.setup{
+        vim.lsp.config('nil_ls', {
           capabilities = capabilities,
           ${
             if cfg.format.enable
@@ -59,7 +60,8 @@ with builtins; let
               },
             },
           ''}
-        }
+        })
+        vim.lsp.enable('nil_ls')
       '';
     };
   };

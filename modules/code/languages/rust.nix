@@ -23,7 +23,7 @@ in {
     crates = {
       enable = mkEnableOption "crates-nvim, tools for managing dependencies";
       codeActions = mkOption {
-        description = "Enable code actions through null-ls";
+        description = "Enable code actions through the crates.nvim in-process language server";
         type = types.bool;
         default = true;
       };
@@ -50,15 +50,18 @@ in {
 
   config = mkIf cfg.enable (mkMerge [
     (mkIf cfg.crates.enable {
-      vim.code.lsp.null-ls.enable = mkIf cfg.crates.codeActions true;
-
       vim.startPlugins = ["crates-nvim"];
 
       vim.autocomplete.sources = {"crates" = "[Crates]";};
+
+      # crates.nvim has retired its null-ls source in favour of an in-process
+      # language server, which serves the same code actions without the
+      # null-ls detour.
       vim.luaConfigRC.rust-crates = nvim.dag.entryAnywhere ''
         require('crates').setup {
-          null_ls = {
+          lsp = {
             enabled = ${boolToString cfg.crates.codeActions},
+            actions = ${boolToString cfg.crates.codeActions},
             name = "crates.nvim",
           }
         }
@@ -69,45 +72,39 @@ in {
       vim.code.treesitter.grammars = [cfg.treesitter.package];
     })
     (mkIf cfg.lsp.enable {
-      vim.startPlugins = ["rust-tools"];
+      vim.startPlugins = ["rustaceanvim"];
 
-      vim.code.lsp.lspconfig.enable = true;
-      vim.code.lsp.lspconfig.sources.rust-lsp = ''
-        local rt = require('rust-tools')
+      vim.code.lsp.enable = true;
+
+      # rustaceanvim succeeds the archived rust-tools.nvim and speaks to
+      # Neovim's LSP client directly, so nothing here touches the deprecated
+      # `require('lspconfig')` framework. It is configured by a global rather
+      # than a setup call, which must be in place before the plugin loads.
+      vim.luaConfigRC.rust-lsp = nvim.dag.entryAfter ["lsp-setup"] ''
         rust_on_attach = function(client, bufnr)
           default_on_attach(client, bufnr)
           local opts = { noremap=true, silent=true, buffer = bufnr }
-          vim.keymap.set("n", "<leader>ris", rt.inlay_hints.set, opts)
-          vim.keymap.set("n", "<leader>riu", rt.inlay_hints.unset, opts)
-          vim.keymap.set("n", "<leader>rr", rt.runnables.runnables, opts)
-          vim.keymap.set("n", "<leader>rp", rt.parent_module.parent_module, opts)
-          vim.keymap.set("n", "<leader>rm", rt.expand_macro.expand_macro, opts)
-          vim.keymap.set("n", "<leader>rc", rt.open_cargo_toml.open_cargo_toml, opts)
-          vim.keymap.set("n", "<leader>rg", function() rt.crate_graph.view_crate_graph("x11", nil) end, opts)
+          vim.keymap.set("n", "<leader>ris", function() vim.lsp.inlay_hint.enable(true, { bufnr = bufnr }) end, opts)
+          vim.keymap.set("n", "<leader>riu", function() vim.lsp.inlay_hint.enable(false, { bufnr = bufnr }) end, opts)
+          vim.keymap.set("n", "<leader>rr", function() vim.cmd.RustLsp("runnables") end, opts)
+          vim.keymap.set("n", "<leader>rp", function() vim.cmd.RustLsp("parentModule") end, opts)
+          vim.keymap.set("n", "<leader>rm", function() vim.cmd.RustLsp("expandMacro") end, opts)
+          vim.keymap.set("n", "<leader>rc", function() vim.cmd.RustLsp("openCargo") end, opts)
+          vim.keymap.set("n", "<leader>rg", function() vim.cmd.RustLsp({"crateGraph", "x11"}) end, opts)
+          -- Replaces rust-tools' hover_with_actions, which it retired in favour of a keybind.
+          vim.keymap.set("n", "<leader>rh", function() vim.cmd.RustLsp({"hover", "actions"}) end, opts)
         end
-        local rustopts = {
-        completion = {
-        postfix = {
-          enable = true,
-        },
-        },
-          tools = {
-            autoSetHints = true,
-            hover_with_actions = true,
-            inlay_hints = {
-              only_current_line = false,
-            }
-          },
+
+        vim.g.rustaceanvim = {
           server = {
             capabilities = capabilities,
             on_attach = rust_on_attach,
             cmd = {"${cfg.lsp.package}/bin/rust-analyzer"},
-            settings = {
+            default_settings = {
               ${cfg.lsp.opts}
-            }
-          }
+            },
+          },
         }
-        rt.setup(rustopts)
       '';
     })
   ]);

@@ -333,8 +333,8 @@
     };
 
     ### Rust
-    rust-tools = {
-      url = "github:simrat39/rust-tools.nvim";
+    rustaceanvim = {
+      url = "github:mrcjkb/rustaceanvim";
       flake = false;
     };
     crates-nvim = {
