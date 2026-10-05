@@ -14,3 +14,6 @@ result/
 # 
 
 **/.claude/settings.local.json
+
+# Ignore agent working notes
+agents/
